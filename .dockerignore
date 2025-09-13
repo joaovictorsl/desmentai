@@ -1,0 +1,16 @@
+.git
+.gitignore
+.dockerignore
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.vscode/
+.idea/
+*.log
+tmp/
+data/ # If your app generates or stores data that shouldn't be in the image
+tests/ # If you don't need tests in the final image
+docs/ # If you don't need docs in the final image
