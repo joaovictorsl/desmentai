@@ -10,7 +10,6 @@ from pathlib import Path
 import pandas as pd
 import logging
 
-# RAGAS imports
 from ragas import evaluate
 from ragas.metrics import (
     faithfulness,
@@ -21,7 +20,6 @@ from ragas.metrics import (
 )
 from datasets import Dataset
 
-# Configurar logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -39,7 +37,6 @@ class RAGASEvaluator:
         self.results_dir = Path(results_dir)
         self.results_dir.mkdir(parents=True, exist_ok=True)
         
-        # Métricas a serem avaliadas
         self.metrics = [
             faithfulness,
             answer_relevancy,
@@ -55,7 +52,6 @@ class RAGASEvaluator:
         Returns:
             Dataset de teste
         """
-        # Conjunto de perguntas de teste com gabaritos
         test_data = {
             "question": [
                 "O Brasil é o maior produtor de café do mundo?",
@@ -123,24 +119,19 @@ class RAGASEvaluator:
         try:
             logger.info("Iniciando avaliação do DesmentAI...")
             
-            # Usar dataset padrão se não fornecido
             if test_dataset is None:
                 test_dataset = self.create_test_dataset()
             
-            # Preparar dados para avaliação
             evaluation_data = self._prepare_evaluation_data(desmentai, test_dataset)
             
-            # Executar avaliação
             logger.info("Executando avaliação RAGAS...")
             result = evaluate(
                 Dataset.from_dict(evaluation_data),
                 metrics=self.metrics
             )
             
-            # Processar resultados
             results = self._process_evaluation_results(result)
             
-            # Salvar resultados
             self._save_results(results)
             
             logger.info("Avaliação concluída com sucesso!")
@@ -174,19 +165,15 @@ class RAGASEvaluator:
             logger.info(f"Processando pergunta {i+1}/{len(questions)}: {question[:50]}...")
             
             try:
-                # Verificar notícia
                 result = desmentai.verify_news(question)
                 
-                # Extrair resposta
                 answer = result.get("final_answer", "")
                 answers.append(answer)
                 
-                # Extrair contextos (documentos encontrados)
                 agent_results = result.get("agent_results", {})
                 retriever_result = agent_results.get("retriever", {})
                 documents = retriever_result.get("documents", [])
                 
-                # Preparar contextos
                 doc_contexts = []
                 for doc in documents[:3]:  # Limitar a 3 documentos
                     content = doc.get("content", "")
@@ -195,7 +182,6 @@ class RAGASEvaluator:
                 
                 contexts.append(doc_contexts if doc_contexts else [""])
                 
-                # Pequena pausa para não sobrecarregar
                 time.sleep(0.5)
                 
             except Exception as e:
@@ -221,10 +207,8 @@ class RAGASEvaluator:
             Resultados processados
         """
         try:
-            # Converter para DataFrame
             df = result.to_pandas()
             
-            # Calcular métricas médias
             metrics_summary = {
                 "faithfulness": df["faithfulness"].mean(),
                 "answer_relevancy": df["answer_relevancy"].mean(),
@@ -233,7 +217,6 @@ class RAGASEvaluator:
                 "answer_correctness": df["answer_correctness"].mean()
             }
             
-            # Análise detalhada
             analysis = {
                 "total_questions": len(df),
                 "average_scores": metrics_summary,
@@ -242,7 +225,6 @@ class RAGASEvaluator:
                 "overall_score": sum(metrics_summary.values()) / len(metrics_summary)
             }
             
-            # Identificar questões problemáticas
             problematic_questions = df[df["faithfulness"] < 0.7]
             analysis["problematic_questions"] = len(problematic_questions)
             
@@ -269,17 +251,14 @@ class RAGASEvaluator:
         try:
             timestamp = int(time.time())
             
-            # Salvar resumo
             summary_file = self.results_dir / f"evaluation_summary_{timestamp}.json"
             with open(summary_file, 'w', encoding='utf-8') as f:
                 json.dump(results["summary"], f, indent=2, ensure_ascii=False)
             
-            # Salvar resultados detalhados
             detailed_file = self.results_dir / f"evaluation_detailed_{timestamp}.json"
             with open(detailed_file, 'w', encoding='utf-8') as f:
                 json.dump(results["detailed_results"], f, indent=2, ensure_ascii=False)
             
-            # Salvar relatório em Markdown
             report_file = self.results_dir / f"evaluation_report_{timestamp}.md"
             self._generate_markdown_report(results, report_file)
             
@@ -363,7 +342,6 @@ class RAGASEvaluator:
         try:
             logger.info("Executando avaliação rápida...")
             
-            # Dataset pequeno para teste rápido
             quick_data = {
                 "question": [
                     "O Brasil é o maior produtor de café do mundo?",
@@ -396,3 +374,4 @@ class RAGASEvaluator:
                 "error": str(e),
                 "success": False
             }
+
