@@ -54,12 +54,12 @@ test-config: ## Testa configurações do sistema
 	$(PYTHON) scripts/test_configurations.py
 	@echo "$(GREEN)✅ Teste de configurações concluído!$(NC)"
 
-evaluate: ## Executa avaliação com RAGAS
-	@echo "$(YELLOW)Executando avaliação RAGAS...$(NC)"
-	$(PYTHON) scripts/evaluate.py
-	@echo "$(GREEN)✅ Avaliação concluída!$(NC)"
+evaluate: ## Executa avaliação completa com RAGAS (10 perguntas)
+	@echo "$(YELLOW)Executando avaliação RAGAS completa...$(NC)"
+	$(PYTHON) scripts/evaluate.py full
+	@echo "$(GREEN)✅ Avaliação completa concluída!$(NC)"
 
-evaluate-quick: ## Executa avaliação rápida
+evaluate-quick: ## Executa avaliação rápida (3 perguntas)
 	@echo "$(YELLOW)Executando avaliação rápida...$(NC)"
 	$(PYTHON) scripts/evaluate.py
 	@echo "$(GREEN)✅ Avaliação rápida concluída!$(NC)"
