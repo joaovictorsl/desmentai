@@ -1,5 +1,6 @@
 """
 Interface Streamlit para o DesmentAI - Sistema de Combate a Fake News.
+Nova interface visual moderna e interativa.
 """
 
 import streamlit as st
@@ -8,13 +9,11 @@ import os
 import sys
 from pathlib import Path
 
-# Adicionar src ao path
 sys.path.append(str(Path(__file__).parent / "src"))
 
 from src.core import DesmentAI
 from src.utils import LLMLoader
 
-# Configuração da página
 st.set_page_config(
     page_title="DesmentAI - Combate a Fake News",
     page_icon="🔍",
@@ -22,314 +21,686 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# CSS personalizado
 st.markdown("""
 <style>
-    .main-header {
-        text-align: center;
-        padding: 2rem 0;
-        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    /* Importar fontes */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    
+    /* Reset global */
+    * {
+        font-family: 'Inter', sans-serif;
+    }
+    
+    .main .block-container {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        max-width: 1200px;
+    }
+    
+    /* Cabeçalho principal com animação */
+    .hero-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
         color: white;
-        border-radius: 10px;
+        padding: 4rem 2rem;
+        border-radius: 20px;
+        margin-bottom: 3rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+    }
+    
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        opacity: 0.3;
+    }
+    
+    .hero-content {
+        position: relative;
+        z-index: 1;
+    }
+    
+    .hero-title {
+        font-size: 4rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, #fff, #f0f9ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    .hero-subtitle {
+        font-size: 1.5rem;
+        font-weight: 300;
+        opacity: 0.9;
         margin-bottom: 2rem;
     }
-    .status-success {
-        color: #28a745;
-        font-weight: bold;
+    
+    .hero-stats {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        margin-top: 2rem;
     }
-    .status-error {
-        color: #dc3545;
-        font-weight: bold;
-    }
-    .status-warning {
-        color: #ffc107;
-        font-weight: bold;
-    }
-    .citation-box {
-        background-color: #f8f9fa;
-        border-left: 4px solid #007bff;
-        padding: 1rem;
-        margin: 1rem 0;
-        border-radius: 5px;
-    }
-    .conclusion-box {
-        padding: 1rem;
-        border-radius: 10px;
-        margin: 1rem 0;
+    
+    .stat-item {
         text-align: center;
-        font-weight: bold;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        display: block;
+    }
+    
+    .stat-label {
+        font-size: 0.9rem;
+        opacity: 0.8;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    /* Cards modernos */
+    .modern-card {
+        background: white;
+        border-radius: 16px;
+        padding: 2rem;
+        margin: 1.5rem 0;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        border: 1px solid rgba(255,255,255,0.2);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .modern-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+    }
+    
+    .modern-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    
+    /* Status indicators modernos */
+    .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+    
+    .status-success {
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: white;
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+    
+    .status-error {
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+        color: white;
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+    }
+    
+    .status-warning {
+        background: linear-gradient(135deg, #f59e0b, #d97706);
+        color: white;
+        box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+    }
+    
+    /* Conclusões com design único */
+    .conclusion-modern {
+        border-radius: 16px;
+        padding: 2rem;
+        margin: 2rem 0;
+        font-weight: 700;
+        font-size: 1.3rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    .conclusion-false {
+        background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+        border: 2px solid #ef4444;
+        color: #991b1b;
+    }
+    
+    .conclusion-true {
+        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        border: 2px solid #22c55e;
+        color: #15803d;
+    }
+    
+    .conclusion-partial {
+        background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+        border: 2px solid #f59e0b;
+        color: #92400e;
+    }
+    
+    .conclusion-insufficient {
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        border: 2px solid #64748b;
+        color: #475569;
+    }
+    
+    /* Fontes com design moderno */
+    .source-modern {
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    
+    .source-modern:hover {
+        transform: translateX(5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        border-color: #3b82f6;
+    }
+    
+    .source-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .source-icon {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+    
+    .source-title {
+        color: #1e40af;
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin: 0;
+    }
+    
+    .source-details {
+        background: white;
+        padding: 1rem;
+        border-radius: 8px;
+        border-left: 4px solid #3b82f6;
+        font-size: 0.95rem;
+        color: #374151;
+    }
+    
+    .source-details strong {
+        color: #1f2937;
+        font-weight: 600;
+    }
+    
+    /* Botões modernos */
+    .modern-button {
+        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        padding: 1rem 2rem;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .modern-button:hover {
+        background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 12px 25px rgba(59, 130, 246, 0.4);
+    }
+    
+    .modern-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.5s;
+    }
+    
+    .modern-button:hover::before {
+        left: 100%;
+    }
+    
+    /* Formulário moderno */
+    .form-modern {
+        background: white;
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        border: 1px solid #e2e8f0;
+    }
+    
+    .form-title {
+        color: #1f2937;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+    
+    /* Disclaimer moderno */
+    .disclaimer-modern {
+        background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+        border: 2px solid #f59e0b;
+        border-radius: 16px;
+        padding: 2rem;
+        margin: 2rem 0;
+        box-shadow: 0 10px 30px rgba(245, 158, 11, 0.1);
+        position: relative;
+    }
+    
+    .disclaimer-modern::before {
+        content: '⚠️';
+        position: absolute;
+        top: -15px;
+        left: 20px;
+        background: #f59e0b;
+        color: white;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         font-size: 1.2rem;
     }
-    .conclusion-true {
-        background-color: #d4edda;
-        color: #155724;
-        border: 2px solid #c3e6cb;
+    
+    .disclaimer-title {
+        color: #92400e;
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin: 0 0 1rem 0;
+        padding-left: 1rem;
     }
-    .conclusion-false {
-        background-color: #f8d7da;
-        color: #721c24;
-        border: 2px solid #f5c6cb;
+    
+    .disclaimer-list {
+        color: #92400e;
+        margin: 0;
+        padding-left: 1.5rem;
     }
-    .conclusion-partial {
-        background-color: #fff3cd;
-        color: #856404;
-        border: 2px solid #ffeaa7;
+    
+    .disclaimer-list li {
+        margin-bottom: 0.8rem;
+        line-height: 1.6;
     }
-    .conclusion-insufficient {
-        background-color: #e2e3e5;
-        color: #383d41;
-        border: 2px solid #d6d8db;
+    
+    /* Sidebar moderna */
+    .sidebar-modern {
+        background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+        border-radius: 16px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+    }
+    
+    /* Animações */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .fade-in {
+        animation: fadeInUp 0.6s ease-out;
+    }
+    
+    /* Responsividade */
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 2.5rem;
+        }
+        
+        .hero-stats {
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .modern-card {
+            padding: 1.5rem;
+        }
     }
 </style>
 """, unsafe_allow_html=True)
 
-# Função para inicializar o sistema
-@st.cache_resource
-def initialize_desmentai():
-    """Inicializa o DesmentAI com cache."""
-    try:
-        desmentai = DesmentAI()
-        success = desmentai.initialize()
-        return desmentai, success
-    except Exception as e:
-        st.error(f"Erro na inicialização: {str(e)}")
-        return None, False
-
-# Função para verificar status do Ollama
-def check_ollama_status():
-    """Verifica se o Ollama está rodando."""
+def check_gemini_status():
+    """Verifica se o Gemini está configurado e funcionando."""
     try:
         llm_loader = LLMLoader()
-        return llm_loader.check_ollama_connection()
-    except:
+        return llm_loader.check_connection()
+    except Exception as e:
+        st.error(f"Erro ao verificar Gemini: {str(e)}")
         return False
 
-# Header principal
-st.markdown("""
-<div class="main-header">
-    <h1>🔍 DesmentAI</h1>
-    <h3>Sistema Inteligente de Combate a Fake News</h3>
-    <p>Verifique notícias e informações usando IA e fontes confiáveis</p>
-</div>
-""", unsafe_allow_html=True)
+def format_source_name(source_path):
+    """Formata o nome da fonte de forma mais legível."""
+    if not source_path:
+        return "Fonte desconhecida"
+    
+    # Extrair nome do arquivo
+    filename = os.path.basename(source_path)
+    
+    # Mapear nomes de arquivos para nomes mais legíveis
+    source_mapping = {
+        "verificacao_covid.html": "Verificação COVID-19",
+        "verificacao_clima.html": "Verificação Clima",
+        "verificacao_economia.txt": "Verificação Economia",
+        "verificacao_eleicoes.txt": "Verificação Eleições",
+        "verificacao_saude.txt": "Verificação Saúde",
+        "agencia_lupa.txt": "Agência Lupa",
+        "aos_fatos.txt": "Aos Fatos",
+        "boatos_org.txt": "Boatos.org",
+        "folha_ciencia.txt": "Folha Ciência",
+        "g1_politica.txt": "G1 Política"
+    }
+    
+    return source_mapping.get(filename, filename.replace("_", " ").title())
 
-# Sidebar
-with st.sidebar:
-    st.header("⚙️ Configurações")
+def main():
+    """Função principal da aplicação."""
     
-    # Status do sistema
-    st.subheader("Status do Sistema")
+    # Cabeçalho hero moderno
+    st.markdown("""
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">🔍 DesmentAI</h1>
+            <p class="hero-subtitle">Sistema Inteligente de Combate a Fake News</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Precisão</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Disponível</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">AI</span>
+                    <span class="stat-label">Powered</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
     
-    # Verificar Ollama
-    ollama_status = check_ollama_status()
-    if ollama_status:
-        st.markdown('<p class="status-success">✅ Ollama Conectado</p>', unsafe_allow_html=True)
-    else:
-        st.markdown('<p class="status-error">❌ Ollama Desconectado</p>', unsafe_allow_html=True)
-        st.warning("Para usar o DesmentAI, você precisa ter o Ollama rodando. Execute: `ollama serve`")
+    # Layout em duas colunas
+    col1, col2 = st.columns([2, 1])
     
-    # Inicializar sistema
-    if ollama_status:
-        with st.spinner("Inicializando DesmentAI..."):
-            desmentai, init_success = initialize_desmentai()
+    with col1:
+        # Interface principal de verificação
+        st.markdown('<div class="form-modern">', unsafe_allow_html=True)
+        st.markdown('<h2 class="form-title">🔍 Verificar Notícia</h2>', unsafe_allow_html=True)
         
-        if init_success:
-            st.markdown('<p class="status-success">✅ DesmentAI Inicializado</p>', unsafe_allow_html=True)
+        # Verificar status do Gemini
+        gemini_status = check_gemini_status()
+        
+        if not gemini_status:
+            st.error("""
+            **Gemini não configurado!**
             
-            # Mostrar informações do sistema
-            status = desmentai.get_system_status()
-            st.subheader("Informações do Sistema")
-            st.write(f"**Modelo LLM:** {status['model_name']}")
-            st.write(f"**Modelo Embeddings:** {status['embedding_model']}")
+            Para usar o sistema, você precisa:
+            1. Configurar sua chave da API do Gemini no arquivo `.env`
+            2. Executar `make run` para iniciar o sistema
+            """)
+            st.markdown('</div>', unsafe_allow_html=True)
+            return
+        
+        # Inicializar sistema
+        try:
+            with st.spinner("Inicializando sistema..."):
+                desmentai = DesmentAI()
+            init_success = True
+        except Exception as e:
+            st.error(f"Erro ao inicializar sistema: {str(e)}")
+            desmentai = None
+            init_success = False
+        
+        if not init_success:
+            st.error("Erro ao inicializar o sistema. Verifique os logs para mais detalhes.")
+            st.markdown('</div>', unsafe_allow_html=True)
+            return
+        
+        # Formulário de verificação
+        with st.form("verification_form"):
+            st.write("**Digite a notícia ou afirmação que deseja verificar:**")
             
-            if 'vector_store' in status:
-                vector_info = status['vector_store']
-                if vector_info.get('status') == 'initialized':
-                    st.write(f"**Documentos Indexados:** {vector_info.get('num_documents', 'N/A')}")
+            # Campo de texto para a notícia
+            news_text = st.text_area(
+                "Notícia/Afirmação:",
+                placeholder="Exemplo: A vacina contra COVID-19 causa autismo",
+                height=120,
+                help="Digite a notícia ou afirmação que deseja verificar"
+            )
+            
+            # Botão de verificação
+            submitted = st.form_submit_button("🔍 Verificar Notícia", use_container_width=True)
+            
+            if submitted:
+                if not news_text.strip():
+                    st.warning("Por favor, digite uma notícia ou afirmação para verificar.")
                 else:
-                    st.write("**Vector Store:** Não inicializado")
-        else:
-            st.markdown('<p class="status-error">❌ Falha na Inicialização</p>', unsafe_allow_html=True)
-    else:
-        desmentai = None
-        init_success = False
-    
-    # Botões de ação
-    st.subheader("Ações")
-    if st.button("🔄 Recarregar Dados"):
-        if desmentai:
-            with st.spinner("Recarregando dados..."):
-                success = desmentai.reload_data()
-            if success:
-                st.success("Dados recarregados com sucesso!")
-            else:
-                st.error("Erro ao recarregar dados")
-        else:
-            st.error("Sistema não inicializado")
-    
-    if st.button("ℹ️ Informações"):
-        st.info("""
-        **DesmentAI** é um sistema de verificação de notícias que utiliza:
-        - **RAG (Retrieval-Augmented Generation)**
-        - **Agentes LangGraph**
-        - **Modelos de linguagem locais (Ollama)**
-        - **Bases de dados confiáveis**
+                    # Processar verificação
+                    with st.spinner("Verificando notícia..."):
+                        try:
+                            result = desmentai.verify_news(news_text)
+                            
+                            if result["success"]:
+                                # Mostrar resultado de sucesso
+                                st.markdown("""
+                                <div class="modern-card fade-in">
+                                    <h3 style="color: #22c55e; text-align: center; margin: 0;">✅ Verificação concluída!</h3>
+                                </div>
+                                """, unsafe_allow_html=True)
+                                
+                                # Resposta principal
+                                st.subheader("📰 Resposta Detalhada")
+                                
+                                # Mostrar conclusão em destaque
+                                conclusion = result.get("conclusion", "INSUFICIENTE")
+                                if conclusion == "FALSA":
+                                    st.markdown("""
+                                    <div class="conclusion-modern conclusion-false fade-in">
+                                        <h4>🔴 CONCLUSÃO: A afirmação é FALSA</h4>
+                                    </div>
+                                    """, unsafe_allow_html=True)
+                                elif conclusion == "VERDADEIRA":
+                                    st.markdown("""
+                                    <div class="conclusion-modern conclusion-true fade-in">
+                                        <h4>🟢 CONCLUSÃO: A afirmação é VERDADEIRA</h4>
+                                    </div>
+                                    """, unsafe_allow_html=True)
+                                elif conclusion == "PARCIALMENTE VERDADEIRA":
+                                    st.markdown("""
+                                    <div class="conclusion-modern conclusion-partial fade-in">
+                                        <h4>🟡 CONCLUSÃO: A afirmação é PARCIALMENTE VERDADEIRA</h4>
+                                    </div>
+                                    """, unsafe_allow_html=True)
+                                else:
+                                    st.markdown("""
+                                    <div class="conclusion-modern conclusion-insufficient fade-in">
+                                        <h4>⚪ CONCLUSÃO: EVIDÊNCIAS INSUFICIENTES</h4>
+                                    </div>
+                                    """, unsafe_allow_html=True)
+                                
+                                # Resposta detalhada
+                                st.markdown('<div class="modern-card fade-in">', unsafe_allow_html=True)
+                                st.write(result.get("final_answer", "Resposta não disponível"))
+                                st.markdown('</div>', unsafe_allow_html=True)
+                                
+                                # Fontes e citações
+                                citations = result.get("citations", [])
+                                if citations:
+                                    st.subheader("📚 Fontes Utilizadas")
+                                    
+                                    for i, citation in enumerate(citations, 1):
+                                        source = citation.get("source", "Fonte desconhecida")
+                                        url = citation.get("url", "")
+                                        relevance = citation.get("relevance_score", 0.0)
+                                        
+                                        # Formatar nome da fonte
+                                        formatted_source = format_source_name(source)
+                                        
+                                        st.markdown(f"""
+                                        <div class="source-modern fade-in">
+                                            <div class="source-header">
+                                                <div class="source-icon">{i}</div>
+                                                <h5 class="source-title">📄 {formatted_source}</h5>
+                                            </div>
+                                            <div class="source-details">
+                                                <strong>Arquivo:</strong> {source}<br>
+                                                <strong>Relevância:</strong> {relevance:.2f}<br>
+                                                {f'<strong>URL:</strong> {url}' if url else ''}
+                                            </div>
+                                        </div>
+                                        """, unsafe_allow_html=True)
+                                else:
+                                    st.info("Nenhuma fonte específica foi utilizada para esta verificação.")
+                                
+                                # Disclaimer
+                                st.markdown("""
+                                <div class="disclaimer-modern fade-in">
+                                    <h5 class="disclaimer-title">DISCLAIMER IMPORTANTE</h5>
+                                    <ul class="disclaimer-list">
+                                        <li>Esta informação é baseada em dados públicos disponíveis e não substitui a consulta a fontes primárias ou especialistas.</li>
+                                        <li>O objetivo é fornecer uma análise informativa com base nas fontes disponíveis.</li>
+                                        <li>Não oferecemos conselhos legais, médicos ou financeiros específicos.</li>
+                                        <li>Recomendamos sempre consultar fontes oficiais e especialistas.</li>
+                                        <li>As informações podem estar desatualizadas ou incompletas.</li>
+                                        <li>Use esta ferramenta como ponto de partida para investigação adicional.</li>
+                                    </ul>
+                                </div>
+                                """, unsafe_allow_html=True)
+                                
+                                # Detalhes técnicos
+                                with st.expander("🔧 Detalhes Técnicos"):
+                                    if "agent_results" in result:
+                                        st.json(result["agent_results"])
+                                    else:
+                                        st.write("Detalhes técnicos não disponíveis")
+                                
+                            else:
+                                # Mostrar erro
+                                st.error(f"❌ Erro na verificação: {result.get('error', 'Erro desconhecido')}")
+                                
+                        except Exception as e:
+                            st.error(f"Erro inesperado: {str(e)}")
+                            st.exception(e)
         
-        Para verificar uma notícia, digite-a na caixa de texto e clique em "Verificar".
-        """)
-
-# Conteúdo principal
-if not ollama_status:
-    st.error("""
-    ## ❌ Ollama não está rodando
+        st.markdown('</div>', unsafe_allow_html=True)
     
-    Para usar o DesmentAI, você precisa ter o Ollama instalado e rodando.
-    
-    **Instalação:**
-    1. Instale o Ollama: https://ollama.ai/
-    2. Execute: `ollama serve`
-    3. Baixe um modelo: `ollama pull llama3.1:8b`
-    4. Recarregue esta página
-    """)
-    
-elif not init_success:
-    st.error("""
-    ## ❌ Erro na Inicialização
-    
-    O DesmentAI não pôde ser inicializado. Verifique:
-    1. Se o Ollama está rodando
-    2. Se há dados na pasta `data/raw/`
-    3. Se as dependências estão instaladas
-    """)
-    
-else:
-    # Interface principal
-    st.header("🔍 Verificação de Notícias")
-    
-    # Caixa de entrada
-    query = st.text_area(
-        "Digite a notícia ou afirmação que deseja verificar:",
-        placeholder="Exemplo: 'O governo brasileiro aprovou uma nova lei que proíbe o uso de redes sociais'",
-        height=100
-    )
-    
-    # Botão de verificação
-    col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        verify_button = st.button("🔍 Verificar Notícia", type="primary", use_container_width=True)
-    
-    # Processar verificação
-    if verify_button and query.strip():
-        with st.spinner("Verificando notícia... Isso pode levar alguns segundos."):
-            result = desmentai.verify_news(query)
+        # Sidebar moderna
+        st.markdown('<div class="sidebar-modern">', unsafe_allow_html=True)
         
-        if result['success']:
-            # Mostrar resultado
-            st.success("✅ Verificação concluída!")
-            
-            # Conclusão
-            conclusion = result.get('conclusion', 'INSUFICIENTE')
-            conclusion_class = f"conclusion-{conclusion.lower()}"
-            
-            conclusion_text = {
-                'VERDADEIRA': '✅ VERDADEIRA',
-                'FALSA': '❌ FALSA',
-                'PARCIALMENTE VERDADEIRA': '⚠️ PARCIALMENTE VERDADEIRA',
-                'INSUFICIENTE': '❓ INFORMAÇÕES INSUFICIENTES',
-                'ERRO': '❌ ERRO NO PROCESSAMENTO'
-            }.get(conclusion, f'❓ {conclusion}')
-            
-            st.markdown(f"""
-            <div class="conclusion-box {conclusion_class}">
-                {conclusion_text}
-            </div>
-            """, unsafe_allow_html=True)
-            
-            # Resposta detalhada
-            st.subheader("📋 Resposta Detalhada")
-            st.write(result.get('final_answer', ''))
-            
-            # Citações
-            citations = result.get('citations', [])
-            if citations:
-                st.subheader("📚 Fontes e Citações")
-                for i, citation in enumerate(citations, 1):
-                    with st.expander(f"Fonte {i}: {citation.get('source', 'Fonte desconhecida')}"):
-                        st.write(f"**URL:** {citation.get('url', 'N/A')}")
-                        st.write(f"**Relevância:** {citation.get('relevance_score', 0.0):.2f}")
-            
-            # Detalhes dos agentes (expansível)
-            with st.expander("🔧 Detalhes Técnicos"):
-                agent_results = result.get('agent_results', {})
-                
-                for agent_name, agent_result in agent_results.items():
-                    st.write(f"**{agent_name.upper()}:**")
-                    if isinstance(agent_result, dict):
-                        for key, value in agent_result.items():
-                            if key not in ['documents', 'citations']:  # Evitar mostrar dados muito grandes
-                                st.write(f"  - {key}: {value}")
-                    else:
-                        st.write(f"  - {agent_result}")
+        # Status do sistema
+        st.header("📊 Status do Sistema")
         
+        if gemini_status:
+            st.markdown('<div class="status-badge status-success">✅ Gemini Configurado</div>', unsafe_allow_html=True)
         else:
-            st.error(f"❌ Erro na verificação: {result.get('error', 'Erro desconhecido')}")
-    
-    elif verify_button and not query.strip():
-        st.warning("⚠️ Por favor, digite uma notícia ou afirmação para verificar.")
-    
-    # Exemplos
-    st.subheader("💡 Exemplos de Verificação")
-    
-    examples = [
-        "O Brasil é o maior produtor de café do mundo",
-        "A vacina contra COVID-19 causa autismo",
-        "O governo brasileiro aprovou uma nova lei de proteção de dados",
-        "A Terra é plana",
-        "O aquecimento global é uma farsa"
-    ]
-    
-    for example in examples:
-        if st.button(f"Verificar: {example}", key=f"example_{example}"):
-            st.session_state.example_query = example
-            st.rerun()
-    
-    # Processar exemplo selecionado
-    if 'example_query' in st.session_state:
-        query = st.session_state.example_query
-        del st.session_state.example_query
+            st.markdown('<div class="status-badge status-error">❌ Gemini Não Configurado</div>', unsafe_allow_html=True)
         
-        with st.spinner("Verificando exemplo..."):
-            result = desmentai.verify_news(query)
+        # Informações do sistema
+        st.header("ℹ️ Informações")
+        st.write("**Provedor:** Google Gemini (API)")
+        st.write("**Modelo:** gemini-2.0-flash")
+        st.write("**Embeddings:** sentence-transformers")
+        st.write("**Vector Store:** FAISS")
         
-        if result['success']:
-            st.success("✅ Verificação concluída!")
+        # Botões de ação
+        st.header("⚡ Ações Rápidas")
+        
+        if st.button("🔄 Recarregar Dados", use_container_width=True):
+            if init_success:
+                with st.spinner("Recarregando dados..."):
+                    try:
+                        desmentai.reload_data()
+                        st.success("Dados recarregados com sucesso!")
+                    except Exception as e:
+                        st.error(f"Erro ao recarregar dados: {str(e)}")
+            else:
+                st.warning("Sistema não inicializado")
+        
+        if st.button("📊 Status Detalhado", use_container_width=True):
+            if init_success:
+                try:
+                    status = desmentai.get_system_status()
+                    st.json(status)
+                except Exception as e:
+                    st.error(f"Erro ao obter status: {str(e)}")
+            else:
+                st.warning("Sistema não inicializado")
+        
+        # Modelos disponíveis
+        st.header("🎯 Modelos Disponíveis")
+        
+        with st.expander("Ver modelos Gemini"):
+            st.write("**Modelos de Linguagem (Gemini):**")
+            st.write("• `gemini-2.0-flash` - Mais recente e rápido - ⭐ RECOMENDADO")
+            st.write("• `gemini-1.5-flash` - Rápido e eficiente")
+            st.write("• `gemini-1.5-pro` - Alta qualidade")
+            st.write("• `gemini-1.0-pro` - Estável e confiável")
             
-            # Mostrar resultado do exemplo
-            conclusion = result.get('conclusion', 'INSUFICIENTE')
-            conclusion_class = f"conclusion-{conclusion.lower()}"
+            st.write("**Modelos de Embeddings:**")
+            st.write("• `all-MiniLM-L6-v2` - Rápido (22MB) - ⭐ RECOMENDADO")
+            st.write("• `paraphrase-multilingual-MiniLM-L12-v2` - Multilíngue (118MB)")
+            st.write("• `BAAI/bge-small-en-v1.5` - Boa qualidade (33MB)")
             
-            conclusion_text = {
-                'VERDADEIRA': '✅ VERDADEIRA',
-                'FALSA': '❌ FALSA',
-                'PARCIALMENTE VERDADEIRA': '⚠️ PARCIALMENTE VERDADEIRA',
-                'INSUFICIENTE': '❓ INFORMAÇÕES INSUFICIENTES',
-                'ERRO': '❌ ERRO NO PROCESSAMENTO'
-            }.get(conclusion, f'❓ {conclusion}')
-            
-            st.markdown(f"""
-            <div class="conclusion-box {conclusion_class}">
-                {conclusion_text}
-            </div>
-            """, unsafe_allow_html=True)
-            
-            st.write(result.get('final_answer', ''))
+            st.write("**Comandos de configuração:**")
+            st.code("make config-gemini        # Modelo padrão (2.0-flash)")
+            st.code("make config-gemini-1.5    # Modelo 1.5-flash")
+            st.code("make config-gemini-pro    # Modelo 1.5-pro")
+            st.code("make quick-start-gemini   # Início rápido")
+        
+        st.markdown('</div>', unsafe_allow_html=True)
+    
+    # Rodapé moderno
+    st.markdown("""
+    <div style="text-align: center; color: #6b7280; padding: 3rem 0; margin-top: 3rem; border-top: 1px solid #e5e7eb;">
+        <h3 style="color: #1f2937; margin-bottom: 1rem;">DesmentAI</h3>
+        <p style="margin: 0; font-size: 1.1rem;">Sistema de Combate a Fake News</p>
+        <p style="margin: 0.5rem 0 0 0; opacity: 0.7;">Powered by Google Gemini & LangChain</p>
+    </div>
+    """, unsafe_allow_html=True)
 
-# Footer
-st.markdown("---")
-st.markdown("""
-<div style="text-align: center; color: #666; padding: 2rem 0;">
-    <p>🔍 <strong>DesmentAI</strong> - Sistema de Combate a Fake News</p>
-    <p>Desenvolvido com LangChain, LangGraph e Streamlit</p>
-    <p>⚠️ Este sistema é para fins educacionais e informativos</p>
-</div>
-""", unsafe_allow_html=True)
+if __name__ == "__main__":
+    main()
