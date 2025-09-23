@@ -8,7 +8,7 @@ from typing import List, Dict, Any, Optional
 from pathlib import Path
 import requests
 from bs4 import BeautifulSoup
-import PyPDF2
+import pypdf
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.schema import Document
 from langchain_community.document_loaders import PyPDFLoader, WebBaseLoader

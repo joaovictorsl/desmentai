@@ -344,3 +344,4 @@ Data: 2024
         except Exception as e:
             logger.error(f"Erro ao criar arquivos HTML: {str(e)}")
             return False
+
