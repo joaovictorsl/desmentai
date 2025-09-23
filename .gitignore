@@ -129,9 +129,6 @@ dmypy.json
 .pyre/
 
 # DesmentAI specific
-data/processed/
-data/vector_store/
-eval/results/
 *.log
 .DS_Store
 Thumbs.db
