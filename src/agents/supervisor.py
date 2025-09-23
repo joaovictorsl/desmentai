@@ -61,7 +61,10 @@ Responda APENAS com o nome do agente (RETRIEVER, SELF_CHECK, ANSWER, SAFETY) ou 
             response = self.llm.invoke(messages)
             
             # Processar resposta
-            agent_name = response.content.strip().upper()
+            if hasattr(response, 'content'):
+                agent_name = response.content.strip().upper()
+            else:
+                agent_name = str(response).strip().upper()
             
             # Validar resposta
             valid_agents = ["RETRIEVER", "SELF_CHECK", "ANSWER", "SAFETY"]
@@ -70,9 +73,9 @@ Responda APENAS com o nome do agente (RETRIEVER, SELF_CHECK, ANSWER, SAFETY) ou 
                 logger.info(f"Supervisor roteou para: {agent_name}")
                 return agent_name
             else:
-                # Se não for um agente válido, assumir que é uma mensagem de redirecionamento
-                logger.info("Supervisor retornou mensagem de redirecionamento")
-                return response.content.strip()
+                # Se não for um agente válido, rotear para RETRIEVER por padrão
+                logger.info(f"Supervisor retornou '{agent_name}', roteando para RETRIEVER")
+                return "RETRIEVER"
                 
         except Exception as e:
             logger.error(f"Erro no supervisor: {str(e)}")
@@ -125,3 +128,4 @@ Responda APENAS com o nome do agente (RETRIEVER, SELF_CHECK, ANSWER, SAFETY) ou 
         }
         
         return descriptions.get(agent_name, "Agente desconhecido")
+

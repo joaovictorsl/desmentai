@@ -79,7 +79,7 @@ FORMATO DA RESPOSTA:
             response = self.llm.invoke(answer_prompt)
             
             # Processar resposta
-            result = self._parse_answer_response(response.content, documents)
+            result = self._parse_answer_response(response, documents)
             
             # Adicionar metadados
             result.update({
@@ -166,9 +166,14 @@ FORMATO DA RESPOSTA:
             Dicionário com resposta processada
         """
         try:
-            lines = response.strip().split('\n')
+            if hasattr(response, 'content'):
+                response_text = response.content
+            else:
+                response_text = str(response)
+            
+            lines = response_text.strip().split('\n')
             conclusion = "INSUFICIENTE"
-            answer = response
+            answer = response_text
             citations = []
             evidence_summary = []
             
@@ -274,3 +279,4 @@ FORMATO DA RESPOSTA:
                 "num_documents": len(documents) if documents else 0,
                 "agent": "ANSWER"
             }
+

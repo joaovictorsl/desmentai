@@ -78,7 +78,7 @@ SEMPRE inclua um disclaimer padrão."""
             response = self.llm.invoke(review_prompt)
             
             # Processar resposta
-            result = self._parse_safety_response(response.content)
+            result = self._parse_safety_response(response)
             
             # Adicionar disclaimer padrão
             result["disclaimer"] = self._get_standard_disclaimer()
@@ -118,7 +118,12 @@ SEMPRE inclua um disclaimer padrão."""
             Dicionário com revisão processada
         """
         try:
-            lines = response.strip().split('\n')
+            if hasattr(response, 'content'):
+                response_text = response.content
+            else:
+                response_text = str(response)
+            
+            lines = response_text.strip().split('\n')
             decision = "APPROVE"
             reason = "Resposta aprovada"
             suggestions = []
@@ -274,3 +279,4 @@ Esta informação é baseada em dados públicos disponíveis e não substitui a 
                 "original_conclusion": conclusion,
                 "agent": "SAFETY"
             }
+

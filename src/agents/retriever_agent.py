@@ -5,7 +5,7 @@ Agente Retriever - Busca informações relevantes na base de conhecimento.
 from typing import Dict, Any, List
 from langchain.schema import Document
 from langchain_core.language_models.base import BaseLanguageModel
-from langchain.vectorstores import FAISS
+from langchain_community.vectorstores import FAISS
 import logging
 
 # Configurar logging
@@ -168,9 +168,14 @@ SEMPRE retorne os documentos encontrados, mesmo que sejam poucos."""
             response = self.llm.invoke(extraction_prompt)
             
             # Processar resposta
+            if hasattr(response, 'content'):
+                response_text = response.content
+            else:
+                response_text = str(response)
+            
             claims = [
                 claim.strip() 
-                for claim in response.content.split('\n') 
+                for claim in response_text.split('\n') 
                 if claim.strip() and not claim.strip().startswith(('1.', '2.', '3.', '-', '*'))
             ]
             
