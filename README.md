@@ -121,21 +121,68 @@ make docker-stop             # Parar Docker
 
 ## 📊 Avaliação
 
-O sistema inclui avaliação automática usando **RAGAS** com métricas:
+O sistema inclui avaliação automática usando **RAGAS** com métricas de qualidade para verificação de fake news.
 
-- **Faithfulness** - Fidelidade às fontes
-- **Answer Relevancy** - Relevância da resposta
-- **Context Precision** - Precisão do contexto
-- **Context Recall** - Recuperação do contexto
-- **Answer Correctness** - Correção da resposta
+### 🎯 Métricas de Qualidade
+
+| Métrica | Pontuação | Descrição | Status |
+|---------|-----------|-----------|---------|
+| **Faithfulness** | 0.384 | Fidelidade da resposta às fontes | ⚠️ Melhorar |
+| **Answer Relevancy** | 0.326 | Relevância da resposta à pergunta | ⚠️ Melhorar |
+| **Context Precision** | 0.775 | Precisão do contexto recuperado | ✅ Excelente |
+| **Context Recall** | 0.650 | Cobertura do contexto relevante | ✅ Bom |
+| **Answer Correctness** | 0.428 | Correção da resposta | ⚠️ Melhorar |
+
+### 📈 Resultados da Avaliação
+
+- **Total de Perguntas**: 10 perguntas de teste
+- **Pontuação Geral**: 0.513/1.0
+- **Melhor Métrica**: Context Precision (0.775)
+- **Pior Métrica**: Answer Relevancy (0.326)
+
+### 🔍 Análise dos Resultados
+
+**✅ Pontos Fortes:**
+- **Context Precision (0.775)**: O sistema recupera contextos muito relevantes
+- **Context Recall (0.650)**: Boa cobertura do contexto necessário
+
+**⚠️ Pontos de Melhoria:**
+- **Faithfulness (0.384)**: Respostas precisam ser mais baseadas nas fontes
+- **Answer Relevancy (0.326)**: Respostas precisam ser mais diretas à pergunta
+- **Answer Correctness (0.428)**: Precisão das respostas pode ser melhorada
+
+### 🚀 Como Executar a Avaliação
 
 ```bash
-# Avaliação rápida
+# Avaliação rápida (3 perguntas)
 make evaluate-quick
 
-# Avaliação completa
+# Avaliação completa (10 perguntas)
 make evaluate
+
+# Avaliação com relatório detalhado
+python scripts/evaluate.py full
 ```
+
+### 📊 Relatórios Gerados
+
+A avaliação gera automaticamente:
+- **Relatório Markdown**: `eval/results/evaluation_report_*.md`
+- **Dados Detalhados**: `eval/results/evaluation_detailed_*.json`
+- **Resumo das Métricas**: `eval/results/evaluation_summary_*.json`
+
+### 🎯 Configuração para RAGAS
+
+Para executar a avaliação, configure as chaves API necessárias:
+
+```bash
+# .env
+GEMINI_API_KEY=your_gemini_api_key_here
+OPENAI_API_KEY=your_openai_api_key_here  # Para RAGAS
+TAVILY_API_KEY=your_tavily_api_key_here  # Para busca web
+```
+
+**Nota**: O RAGAS utiliza OpenAI para algumas métricas, mas o sistema principal funciona com Gemini.
 
 ## 🐳 Docker
 
@@ -286,7 +333,7 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para de
 
 ## 👥 Equipe
 
-- **Desenvolvimento**: Equipe DesmentAI
+- **Desenvolvimento**: Mayara Brito Pinheiro
 - **Arquitetura**: RAG + LangGraph + Google Gemini
 - **Avaliação**: RAGAS Framework
 
