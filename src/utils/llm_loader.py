@@ -61,7 +61,6 @@ class LLMLoader:
         """
         # Mapear nomes de modelos para os modelos do Gemini
         model_mapping = {
-            "gemini-pro": "gemini-2.0-flash",  # gemini-pro foi descontinuado
             "gemini-2.0-flash": "gemini-2.0-flash",
             "gemini-1.5-pro": "gemini-1.5-pro",
             "gemini-1.5-flash": "gemini-1.5-flash",

@@ -180,7 +180,11 @@ class DesmentAIGraph:
             documents = state.get("documents", [])
             evidence_quality = state.get("evidence_quality", "INSUFFICIENT")
             
-            result = self.agents["answer"].process_query(query, documents, evidence_quality)
+            # Obter fonte da busca do resultado do retriever
+            retriever_result = state.get("agent_results", {}).get("retriever", {})
+            search_source = retriever_result.get("search_source", "unknown")
+            
+            result = self.agents["answer"].process_query(query, documents, evidence_quality, search_source)
             
             state["answer"] = result.get("answer", "")
             state["conclusion"] = result.get("conclusion", "INSUFICIENTE")

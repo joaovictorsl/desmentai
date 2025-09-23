@@ -176,7 +176,14 @@ class DesmentAI:
             # Criar agentes
             self.agents = {
                 "supervisor": SupervisorAgent(llm),
-                "retriever": RetrieverAgent(llm, self.vector_store),
+                "retriever": RetrieverAgent(
+                    llm, 
+                    self.vector_store,
+                    self.document_processor,
+                    self.embedding_manager,
+                    min_local_docs=3,  # Mais rigoroso
+                    web_search_threshold=0.7  # Threshold mais alto
+                ),
                 "self_check": SelfCheckAgent(llm),
                 "answer": AnswerAgent(llm),
                 "safety": SafetyAgent(llm)
@@ -326,7 +333,11 @@ class DesmentAI:
             if self.agents.get("retriever"):
                 self.agents["retriever"] = RetrieverAgent(
                     self.llm_loader.get_llm(), 
-                    self.vector_store
+                    self.vector_store,
+                    self.document_processor,
+                    self.embedding_manager,
+                    min_local_docs=3,  
+                    web_search_threshold=0.7
                 )
             
             logger.info("Dados recarregados com sucesso")

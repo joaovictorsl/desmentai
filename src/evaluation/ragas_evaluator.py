@@ -9,6 +9,10 @@ from typing import List, Dict, Any, Optional
 from pathlib import Path
 import pandas as pd
 import logging
+from dotenv import load_dotenv
+
+# Carregar variáveis de ambiente
+load_dotenv()
 
 from ragas import evaluate
 from ragas.metrics import (
@@ -19,6 +23,8 @@ from ragas.metrics import (
     answer_correctness
 )
 from datasets import Dataset
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_openai import ChatOpenAI
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -37,13 +43,61 @@ class RAGASEvaluator:
         self.results_dir = Path(results_dir)
         self.results_dir.mkdir(parents=True, exist_ok=True)
         
+        # Configurar métricas (usar configuração padrão do RAGAS)
+        # Nota: Reordenar métricas para evitar incompatibilidade entre answer_relevancy e context_precision
+        # answer_relevancy deve vir por último para evitar IndexError
         self.metrics = [
             faithfulness,
-            answer_relevancy,
             context_precision,
             context_recall,
-            answer_correctness
+            answer_correctness,
+            answer_relevancy  # Colocado por último para evitar conflito com context_precision
         ]
+        
+        # Não configurar LLM customizado para evitar incompatibilidades
+        self.llm = None
+        logger.info("Usando configuração padrão do RAGAS (sem LLM customizado)")
+    
+    def _setup_llm(self):
+        """
+        Configura o LLM para o RAGAS (prioriza OpenAI, fallback para Gemini).
+        
+        Returns:
+            LLM configurado (OpenAI ou Gemini)
+        """
+        # Tentar OpenAI primeiro (melhor compatibilidade com RAGAS)
+        openai_key = os.getenv('OPENAI_API_KEY')
+        if openai_key and openai_key != 'your_openai_api_key_here':
+            try:
+                llm = ChatOpenAI(
+                    model="gpt-3.5-turbo",
+                    api_key=openai_key,
+                    temperature=0.1
+                )
+                logger.info("LLM OpenAI configurado: gpt-3.5-turbo")
+                return llm
+            except Exception as e:
+                logger.warning(f"Erro ao configurar OpenAI: {str(e)}")
+        
+        # Fallback para Gemini
+        gemini_key = os.getenv('GEMINI_API_KEY')
+        if gemini_key and gemini_key != 'your_gemini_api_key_here':
+            try:
+                model_name = os.getenv('MODEL_NAME', 'gemini-2.0-flash')
+                llm = ChatGoogleGenerativeAI(
+                    model=model_name,
+                    google_api_key=gemini_key,
+                    temperature=0.1,
+                    convert_system_message_to_human=True
+                )
+                logger.info(f"LLM Gemini configurado: {model_name}")
+                return llm
+            except Exception as e:
+                logger.warning(f"Erro ao configurar Gemini: {str(e)}")
+        
+        # Se nenhuma chave estiver configurada
+        logger.warning("Nenhuma API key configurada. RAGAS usará configuração padrão.")
+        return None
     
     def create_test_dataset(self) -> Dataset:
         """
@@ -125,6 +179,9 @@ class RAGASEvaluator:
             evaluation_data = self._prepare_evaluation_data(desmentai, test_dataset)
             
             logger.info("Executando avaliação RAGAS...")
+            
+            # Sempre usar configuração padrão do RAGAS para evitar incompatibilidades
+            logger.info("Usando configuração padrão do RAGAS")
             result = evaluate(
                 Dataset.from_dict(evaluation_data),
                 metrics=self.metrics

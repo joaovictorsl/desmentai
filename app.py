@@ -444,20 +444,6 @@ def main():
         <div class="hero-content">
             <h1 class="hero-title">🔍 DesmentAI</h1>
             <p class="hero-subtitle">Sistema Inteligente de Combate a Fake News</p>
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <span class="stat-number">100%</span>
-                    <span class="stat-label">Precisão</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">24/7</span>
-                    <span class="stat-label">Disponível</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">AI</span>
-                    <span class="stat-label">Powered</span>
-                </div>
-            </div>
         </div>
     </div>
     """, unsafe_allow_html=True)

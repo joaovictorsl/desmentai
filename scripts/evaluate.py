@@ -6,6 +6,10 @@ Script para avaliar o DesmentAI usando RAGAS.
 import sys
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Carregar variáveis de ambiente
+load_dotenv()
 
 # Adicionar src ao path
 sys.path.append(str(Path(__file__).parent.parent))
@@ -45,7 +49,13 @@ def main():
         print("Isso pode levar alguns minutos...")
         
         # Escolher tipo de avaliação
-        evaluation_type = input("Tipo de avaliação (quick/full): ").lower().strip()
+        import sys
+        if len(sys.argv) > 1 and sys.argv[1] == "full":
+            evaluation_type = "full"
+        else:
+            evaluation_type = "quick"
+        
+        print(f"Executando avaliação: {evaluation_type}")
         
         if evaluation_type == "quick":
             results = evaluator.run_quick_evaluation(desmentai)

@@ -40,7 +40,8 @@ FORMATO DA RESPOSTA:
 - CITAÇÕES: [fonte + URL/fragmento para cada evidência]
 - EXPLICAÇÃO: [explicação detalhada do raciocínio]"""
 
-    def generate_answer(self, query: str, documents: List[Dict[str, Any]], evidence_quality: str) -> Dict[str, Any]:
+    def generate_answer(self, query: str, documents: List[Dict[str, Any]], evidence_quality: str, 
+                       search_source: str = "unknown") -> Dict[str, Any]:
         """
         Gera uma resposta baseada nas evidências encontradas.
         
@@ -79,7 +80,7 @@ FORMATO DA RESPOSTA:
             response = self.llm.invoke(answer_prompt)
             
             # Processar resposta
-            result = self._parse_answer_response(response, documents)
+            result = self._parse_answer_response(response, documents, search_source)
             
             # Adicionar metadados
             result.update({
@@ -154,13 +155,38 @@ FORMATO DA RESPOSTA:
         
         return "\n".join(context_parts)
     
-    def _parse_answer_response(self, response: str, documents: List[Dict[str, Any]]) -> Dict[str, Any]:
+    def _filter_documents_by_source(self, documents: List[Dict[str, Any]], search_source: str) -> List[Dict[str, Any]]:
+        """
+        Filtra documentos baseado na fonte da busca.
+        
+        Args:
+            documents: Lista de documentos
+            search_source: Fonte da busca (local_only, hybrid, web_only)
+            
+        Returns:
+            Lista de documentos filtrados
+        """
+        if search_source == "local_only":
+            # Apenas local: mostrar todos os documentos
+            return documents
+        elif search_source in ["hybrid", "web_only"]:
+            # Híbrido ou apenas web: mostrar apenas documentos da web
+            web_docs = [doc for doc in documents if doc.get("source") == "web"]
+            logger.info(f"Filtrados {len(documents)} documentos para {len(web_docs)} documentos web")
+            return web_docs
+        else:
+            # Fonte desconhecida: mostrar todos
+            return documents
+    
+    def _parse_answer_response(self, response: str, documents: List[Dict[str, Any]], 
+                              search_source: str = "unknown") -> Dict[str, Any]:
         """
         Processa a resposta do LLM para extrair componentes estruturados.
         
         Args:
             response: Resposta do LLM
             documents: Lista de documentos para extrair citações
+            search_source: Fonte da busca (local_only, hybrid, web_only)
             
         Returns:
             Dicionário com resposta processada
@@ -183,8 +209,11 @@ FORMATO DA RESPOSTA:
                     conclusion = line.split(":", 1)[1].strip().upper()
                     break
             
-            # Extrair citações dos documentos
-            for doc in documents:
+            # Filtrar documentos baseado na fonte da busca
+            filtered_documents = self._filter_documents_by_source(documents, search_source)
+            
+            # Extrair citações dos documentos filtrados
+            for doc in filtered_documents:
                 source = doc["metadata"].get("source", "Fonte desconhecida")
                 url = doc["metadata"].get("url", "")
                 citation = {
@@ -194,8 +223,8 @@ FORMATO DA RESPOSTA:
                 }
                 citations.append(citation)
             
-            # Extrair resumo das evidências
-            for doc in documents:
+            # Extrair resumo das evidências dos documentos filtrados
+            for doc in filtered_documents:
                 evidence_summary.append({
                     "content": doc["content"][:200] + "...",
                     "source": doc["metadata"].get("source", "Fonte desconhecida")
@@ -203,7 +232,7 @@ FORMATO DA RESPOSTA:
             
             return {
                 "conclusion": conclusion,
-                "answer": answer,
+                "answer": response_text,
                 "citations": citations,
                 "evidence_summary": evidence_summary
             }
@@ -243,7 +272,8 @@ FORMATO DA RESPOSTA:
         
         return "\n".join(formatted_citations)
     
-    def process_query(self, query: str, documents: List[Dict[str, Any]], evidence_quality: str) -> Dict[str, Any]:
+    def process_query(self, query: str, documents: List[Dict[str, Any]], evidence_quality: str, 
+                     search_source: str = "unknown") -> Dict[str, Any]:
         """
         Processa uma consulta completa, gerando resposta baseada em evidências.
         
@@ -257,7 +287,7 @@ FORMATO DA RESPOSTA:
         """
         try:
             # Gerar resposta
-            result = self.generate_answer(query, documents, evidence_quality)
+            result = self.generate_answer(query, documents, evidence_quality, search_source)
             
             # Formatar citações
             if result.get("citations"):
