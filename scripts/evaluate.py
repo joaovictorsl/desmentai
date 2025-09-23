@@ -8,7 +8,7 @@ import os
 from pathlib import Path
 
 # Adicionar src ao path
-sys.path.append(str(Path(__file__).parent.parent / "src"))
+sys.path.append(str(Path(__file__).parent.parent))
 
 from src.core import DesmentAI
 from src.evaluation import RAGASEvaluator
