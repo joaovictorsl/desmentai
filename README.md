@@ -333,7 +333,7 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para de
 
 ## 👥 Equipe
 
-- **Desenvolvimento**: Mayara Brito Pinheiro
+- **Desenvolvimento**: Equipe DesmentAI
 - **Arquitetura**: RAG + LangGraph + Google Gemini
 - **Avaliação**: RAGAS Framework
 
