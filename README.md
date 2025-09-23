@@ -13,13 +13,42 @@ Sistema inteligente de verificação de notícias utilizando **RAG (Retrieval-Au
 
 ## 🏗️ Arquitetura
 
+### Visão Geral
+O DesmentAI utiliza uma **arquitetura multi-agente** baseada em **LangGraph** com **busca híbrida** (local + web) para combate a fake news.
+
 ### Stack Tecnológica
 - **Python 3.11+**
 - **LangChain + LangGraph** - Framework de agentes
-- **FAISS/Chroma** - Banco de dados vetorial
+- **FAISS** - Banco de dados vetorial
 - **Google Gemini** - Modelos de linguagem via API
-- **HuggingFace** - Embeddings (all-MiniLM-L6-v2, bge-small)
+- **HuggingFace** - Embeddings (all-MiniLM-L6-v2)
 - **Streamlit** - Interface de usuário
+- **Tavily API** - Busca web em tempo real
+- **RAGAS** - Avaliação de qualidade
+
+### Fluxo de Agentes
+```
+👑 Supervisor → 🔍 Retriever → ✅ Self-Check → 💬 Answer → 🛡️ Safety
+```
+
+### Componentes Principais
+- **🧠 DesmentAI Core**: Orquestrador principal
+- **👑 Supervisor Agent**: Roteamento de consultas
+- **🔍 Retriever Agent**: Busca híbrida (local + web)
+- **✅ Self-Check Agent**: Verificação de evidências
+- **💬 Answer Agent**: Geração de respostas
+- **🛡️ Safety Agent**: Revisão de segurança
+
+### Busca Híbrida Inteligente
+1. **Busca local** na base de conhecimento (FAISS)
+2. **Decisão automática** para busca web quando necessário
+3. **Salvamento contínuo** de documentos web
+4. **Filtragem de fontes** baseada no tipo de busca
+
+### Documentação Detalhada
+- 🌐 [Arquitetura Interativa (HTML)](docs/arquitetura.html) - **Visualização completa**
+- 📋 [Arquitetura Completa](docs/arquitetura_sistema.md)
+- 🎨 [Diagrama ASCII](docs/arquitetura_ascii.txt)
 
 ### Modelos Suportados
 
