@@ -1,3 +1,4 @@
+# Core dependencies
 annotated-types==0.7.0
 anyio==4.10.0
 certifi==2025.8.3
@@ -20,3 +21,42 @@ typing-inspection==0.4.1
 typing_extensions==4.15.0
 urllib3==2.5.0
 uvicorn==0.35.0
+
+# LangChain and LangGraph
+langchain==0.3.7
+langchain-community==0.3.7
+langgraph==0.2.45
+langchain-core==0.3.17
+
+# Streamlit for UI
+streamlit==1.39.0
+
+# Vector databases and embeddings
+faiss-cpu==1.12.0
+chromadb==0.5.3
+sentence-transformers==3.1.1
+
+# Document processing
+pypdf==5.1.0
+beautifulsoup4==4.12.3
+requests==2.32.3
+lxml==5.3.0
+
+# Google Generative AI (Gemini)
+google-generativeai==0.8.3
+langchain-google-genai==2.0.4
+
+# Evaluation
+ragas==0.2.4
+datasets==3.0.1
+
+# Utilities
+python-dotenv==1.0.1
+numpy
+pandas
+tqdm==4.67.1
+
+# Development
+pytest==8.3.4
+black==24.10.0
+flake8==7.1.1

@@ -1,10 +1,29 @@
 services:
-  app:
+  desmentai:
     build: .
     ports:
-      - ${PORT}:${PORT}
-    command: "uvicorn app.web.main:app --host 0.0.0.0 --port ${PORT}"
-    expose:
-      - ${PORT}
-    env_file:
-      - .env
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data
+      - ./eval:/app/eval
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - MODEL_NAME=${MODEL_NAME:-gemini-2.0-flash}
+      - EMBEDDING_MODEL=${EMBEDDING_MODEL:-sentence-transformers/all-MiniLM-L6-v2}
+      - LLM_TEMPERATURE=${LLM_TEMPERATURE:-0.1}
+      - LLM_TOP_P=${LLM_TOP_P:-0.9}
+      - LLM_TOP_K=${LLM_TOP_K:-40}
+      - LLM_REPEAT_PENALTY=${LLM_REPEAT_PENALTY:-1.1}
+      - VECTOR_STORE_PATH=${VECTOR_STORE_PATH:-data/vector_store}
+      - DATA_PATH=${DATA_PATH:-data/raw}
+      - CHUNK_SIZE=${CHUNK_SIZE:-1000}
+      - CHUNK_OVERLAP=${CHUNK_OVERLAP:-200}
+      - MAX_DOCUMENTS=${MAX_DOCUMENTS:-5}
+      - SIMILARITY_THRESHOLD=${SIMILARITY_THRESHOLD:-0.6}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
