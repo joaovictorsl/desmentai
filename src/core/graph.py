@@ -7,7 +7,6 @@ from langgraph.graph import StateGraph, END
 from langgraph.prebuilt import ToolNode
 import logging
 
-# Configurar logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -44,10 +43,8 @@ class DesmentAIGraph:
     def _build_graph(self) -> StateGraph:
         """Constrói o grafo LangGraph."""
         try:
-            # Criar grafo
             workflow = StateGraph(DesmentAIState)
             
-            # Adicionar nós
             workflow.add_node("supervisor", self._supervisor_node)
             workflow.add_node("retriever", self._retriever_node)
             workflow.add_node("self_check", self._self_check_node)
@@ -55,10 +52,8 @@ class DesmentAIGraph:
             workflow.add_node("safety", self._safety_node)
             workflow.add_node("error_handler", self._error_handler_node)
             
-            # Definir ponto de entrada
             workflow.set_entry_point("supervisor")
             
-            # Adicionar arestas condicionais
             workflow.add_conditional_edges(
                 "supervisor",
                 self._supervisor_router,
@@ -110,7 +105,6 @@ class DesmentAIGraph:
             
             workflow.add_edge("error_handler", END)
             
-            # Compilar grafo
             return workflow.compile()
             
         except Exception as e:
@@ -125,14 +119,12 @@ class DesmentAIGraph:
                 state["error"] = "Consulta vazia"
                 return state
             
-            # Rotear consulta
             agent_name = self.agents["supervisor"].route_query(query)
             
             if agent_name == "RETRIEVER":
                 state["current_agent"] = "retriever"
                 state["agent_results"] = {"supervisor": {"routed_to": "retriever"}}
             else:
-                # Mensagem de redirecionamento
                 state["final_answer"] = agent_name
                 state["current_agent"] = "end"
             
@@ -281,7 +273,6 @@ class DesmentAIGraph:
             Resultado do processamento
         """
         try:
-            # Estado inicial
             initial_state = DesmentAIState(
                 query=query,
                 documents=[],
@@ -297,10 +288,8 @@ class DesmentAIGraph:
                 error=""
             )
             
-            # Executar grafo
             result = self.graph.invoke(initial_state)
             
-            # Preparar resultado final
             return {
                 "query": query,
                 "final_answer": result.get("final_answer", ""),
@@ -322,3 +311,4 @@ class DesmentAIGraph:
                 "error": str(e),
                 "success": False
             }
+

@@ -59,6 +59,9 @@ class DesmentAI:
         self.initialization_error = None
         
         logger.info("DesmentAI inicializado")
+        
+        # Inicializar automaticamente
+        self.initialize()
     
     def initialize(self) -> bool:
         """
@@ -71,11 +74,15 @@ class DesmentAI:
             logger.info("Inicializando DesmentAI...")
             
             # 1. Inicializar LLM loader
-            self.llm_loader = LLMLoader(self.model_name)
+            self.llm_loader = LLMLoader()
             
-            # Verificar conexão com Ollama
-            if not self.llm_loader.check_ollama_connection():
-                raise Exception("Servidor Ollama não está rodando. Execute: ollama serve")
+            # Verificar conexão com o provedor configurado
+            if not self.llm_loader.check_connection():
+                provider = self.llm_loader.provider
+                if provider == "gemini":
+                    raise Exception("Falha na conexão com Gemini. Verifique sua GEMINI_API_KEY.")
+                else:
+                    raise Exception("Servidor Ollama não está rodando. Execute: ollama serve")
             
             # 2. Inicializar processador de documentos
             self.document_processor = DocumentProcessor()
@@ -286,11 +293,19 @@ class DesmentAI:
             vector_info = self.embedding_manager.get_vector_store_info()
             status["vector_store"] = vector_info
             
-            # Verificar conexão Ollama
-            status["ollama_connected"] = self.llm_loader.check_ollama_connection()
+            # Verificar conexão Gemini
+            status["gemini_connected"] = self.llm_loader.check_connection()
             
-            # Modelos disponíveis
-            status["available_models"] = self.llm_loader.get_available_models()
+            # Configurações de performance do LLM
+            config_info = self.llm_loader.get_config_info()
+            status.update({
+                "temperature": config_info.get("temperature", 0.1),
+                "top_p": config_info.get("top_p", 0.9),
+                "top_k": config_info.get("top_k", 40),
+                "repeat_penalty": config_info.get("repeat_penalty", 1.1),
+                "model_name": config_info.get("model_name", "gemini-2.0-flash"),
+                "provider": config_info.get("provider", "gemini")
+            })
         
         return status
     
@@ -320,3 +335,4 @@ class DesmentAI:
         except Exception as e:
             logger.error(f"Erro ao recarregar dados: {str(e)}")
             return False
+
