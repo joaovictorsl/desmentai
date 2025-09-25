@@ -22,7 +22,6 @@ class LLMLoader:
         self.embedding_model = os.getenv("EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
         self._llm: Optional[BaseLanguageModel] = None
         
-        # Configurações de performance
         self.temperature = float(os.getenv("LLM_TEMPERATURE", "0.1"))
         self.top_p = float(os.getenv("LLM_TOP_P", "0.9"))
         self.top_k = int(os.getenv("LLM_TOP_K", "40"))
@@ -39,7 +38,6 @@ class LLMLoader:
             if not self.gemini_api_key:
                 raise ValueError("GEMINI_API_KEY é obrigatória. Configure sua chave API no arquivo .env")
             
-            # Configurar modelo Gemini baseado no nome
             gemini_model = self._get_gemini_model_name()
             
             self._llm = ChatGoogleGenerativeAI(
@@ -59,7 +57,6 @@ class LLMLoader:
         Returns:
             Nome do modelo no formato do Gemini
         """
-        # Mapear nomes de modelos para os modelos do Gemini
         model_mapping = {
             "gemini-2.0-flash": "gemini-2.0-flash",
             "gemini-1.5-pro": "gemini-1.5-pro",
@@ -121,8 +118,6 @@ class LLMLoader:
         except Exception as e:
             print(f"Erro na conexão com Gemini: {str(e)}")
             return False
-    
-    
     
     
     def get_recommended_embeddings(self) -> List[Dict[str, str]]:

@@ -453,7 +453,6 @@ def main():
     
     with col1:
         # Interface principal de verificação
-        st.markdown('<div class="form-modern">', unsafe_allow_html=True)
         st.markdown('<h2 class="form-title">🔍 Verificar Notícia</h2>', unsafe_allow_html=True)
         
         # Verificar status do Gemini
@@ -520,35 +519,7 @@ def main():
                                 # Resposta principal
                                 st.subheader("📰 Resposta Detalhada")
                                 
-                                # Mostrar conclusão em destaque
-                                conclusion = result.get("conclusion", "INSUFICIENTE")
-                                if conclusion == "FALSA":
-                                    st.markdown("""
-                                    <div class="conclusion-modern conclusion-false fade-in">
-                                        <h4>🔴 CONCLUSÃO: A afirmação é FALSA</h4>
-                                    </div>
-                                    """, unsafe_allow_html=True)
-                                elif conclusion == "VERDADEIRA":
-                                    st.markdown("""
-                                    <div class="conclusion-modern conclusion-true fade-in">
-                                        <h4>🟢 CONCLUSÃO: A afirmação é VERDADEIRA</h4>
-                                    </div>
-                                    """, unsafe_allow_html=True)
-                                elif conclusion == "PARCIALMENTE VERDADEIRA":
-                                    st.markdown("""
-                                    <div class="conclusion-modern conclusion-partial fade-in">
-                                        <h4>🟡 CONCLUSÃO: A afirmação é PARCIALMENTE VERDADEIRA</h4>
-                                    </div>
-                                    """, unsafe_allow_html=True)
-                                else:
-                                    st.markdown("""
-                                    <div class="conclusion-modern conclusion-insufficient fade-in">
-                                        <h4>⚪ CONCLUSÃO: EVIDÊNCIAS INSUFICIENTES</h4>
-                                    </div>
-                                    """, unsafe_allow_html=True)
-                                
                                 # Resposta detalhada
-                                st.markdown('<div class="modern-card fade-in">', unsafe_allow_html=True)
                                 st.write(result.get("final_answer", "Resposta não disponível"))
                                 st.markdown('</div>', unsafe_allow_html=True)
                                 
@@ -556,6 +527,7 @@ def main():
                                 citations = result.get("citations", [])
                                 if citations:
                                     st.subheader("📚 Fontes Utilizadas")
+                                    citations = sorted(citations, key=lambda x: x.get("relevance_score", 0.0), reverse=True)
                                     
                                     for i, citation in enumerate(citations, 1):
                                         source = citation.get("source", "Fonte desconhecida")
@@ -574,7 +546,6 @@ def main():
                                             <div class="source-details">
                                                 <strong>Arquivo:</strong> {source}<br>
                                                 <strong>Relevância:</strong> {relevance:.2f}<br>
-                                                {f'<strong>URL:</strong> {url}' if url else ''}
                                             </div>
                                         </div>
                                         """, unsafe_allow_html=True)
@@ -614,9 +585,6 @@ def main():
         st.markdown('</div>', unsafe_allow_html=True)
     
     with col2:
-        # Sidebar moderna
-        st.markdown('<div class="sidebar-modern">', unsafe_allow_html=True)
-        
         # Status do sistema
         st.header("📊 Status do Sistema")
         

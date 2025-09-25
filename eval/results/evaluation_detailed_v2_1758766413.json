@@ -1,0 +1,172 @@
+[
+  {
+    "user_input": "A USAID, agência dos EUA, financiou a imprensa brasileira para aumentar os números de mortes por Covid-19 e influenciar as eleições de 2022?",
+    "retrieved_contexts": [
+      "Com as alegações, Eduardo Bolsonaro recicla teorias de Donald Trump, que acusa a Usaid e outras agências americanas de pagar a imprensa",
+      "Verificação: Vacinas COVID-19\n\n\nVERIFICAÇÃO: Vacinas contra COVID-19 são seguras\nVERDADEIRO. As vacinas contra COVID-19 são seguras e eficazes, conforme comprovado por estudos científicos rigorosos.\nDados da OMS mostram que mais de 13 bilhões de doses foram administradas globalmente com segurança.\nFonte: Organização Mundial da Saúde (OMS)\nData: 2024",
+      "Postagens afirmam que agência teria interferido no resultado das urnas e financiado campanha de Lula, mas não há documento público que comprove",
+      "Verificação: Mudanças Climáticas\n\n\nVERIFICAÇÃO: Mudanças climáticas são causadas pelo homem\nVERDADEIRO. O consenso científico é claro: as mudanças climáticas são causadas principalmente pela atividade humana.\nDados da NASA mostram que a temperatura média global aumentou 1,1°C desde 1880.\nFonte: NASA e IPCC\nData: 2024",
+      "Uma delas é a de que a USAID teria financiado a campanha do presidente Luiz Inácio Lula da Silva contra o ex-presidente Jair Bolsonaro (PL). O"
+    ],
+    "response": "A alegação de que a USAID financiou a imprensa brasileira para aumentar os números de mortes por Covid-19 e influenciar as eleições de 2022 é falsa.\n\nAs evidências apontam para o seguinte:\n\n*   **Não há comprovação de financiamento para influenciar as eleições:** Postagens afirmam que a USAID interferiu no resultado das urnas e financiou a campanha de Lula, mas \"não há documento público que comprove\" (Evidência 3).\n*   **Alegações infundadas:** Eduardo Bolsonaro \"recicla teorias de Donald Trump, que acusa a Usaid e outras agências americanas de pagar a imprensa\" (Evidência 1), sugerindo que a acusação carece de base factual.\n*   **Foco em outras áreas:** A USAID financiou projetos no Brasil durante o ano eleitoral de 2022 (Evidência 5), mas não há evidências de que esse financiamento tenha sido direcionado para inflar números de mortes por Covid-19 ou influenciar as eleições.\n\nAs evidências 2 e 4, sobre a segurança das vacinas COVID-19 e as causas das mudanças climáticas, respectivamente, não são diretamente relevantes para a verificação da alegação em questão.\n\n⚠️ **DISCLAIMER IMPORTANTE** ⚠️\n\nEsta informação é baseada em dados públicos disponíveis e não substitui a consulta a fontes primárias ou especialistas. O objetivo é fornecer uma análise informativa com base nas fontes disponíveis.\n\n- Não oferecemos conselhos legais, médicos ou financeiros específicos\n- Recomendamos sempre consultar fontes oficiais e especialistas\n- As informações podem estar desatualizadas ou incompletas\n- Use esta ferramenta como ponto de partida para investigação adicional",
+    "reference": "FALSO: Não há nenhum registro de transferência de dinheiro da USAID para veículos de imprensa brasileiros. A checagem mostra que os recursos da agência no Brasil foram destinados a projetos sociais e de meio ambiente (Projeto Comprova, 2025).",
+    "faithfulness": 0.375,
+    "context_precision": 0.7555555555303703,
+    "context_recall": 0.5,
+    "answer_correctness": 0.28258052777474585,
+    "answer_relevancy": NaN
+  },
+  {
+    "user_input": "O governo irá notificar e taxar adultos que moram com os pais sem pagar aluguel a partir de 2026?",
+    "retrieved_contexts": [
+      "O Estadão Verifica investigou e concluiu que: é falso. A Receita Federal negou em nota que pretenda taxar adultos que moram com os pais a partir",
+      "Já no caso dos adultos que moram na casa dos pais sem pagar, não haverá a cobrança de imposto de renda. Sendo assim, a cessão de um imóvel",
+      "Com as alegações, Eduardo Bolsonaro recicla teorias de Donald Trump, que acusa a Usaid e outras agências americanas de pagar a imprensa",
+      "A mentira tenta relacionar isso, de maneira confusa, com pagamentos de aluguel ou algo nesse sentido. Isso não existe, nem faz o menor sentido.",
+      "Uma delas é a de que a USAID teria financiado a campanha do presidente Luiz Inácio Lula da Silva contra o ex-presidente Jair Bolsonaro (PL). O"
+    ],
+    "response": "A afirmação de que o governo irá notificar e taxar adultos que moram com os pais sem pagar aluguel a partir de 2026 é falsa.\n\nDiversas fontes de checagem de fatos e a própria Receita Federal desmentiram essa informação:\n\n*   O Estadão Verifica concluiu que a alegação é falsa, citando que a Receita Federal negou qualquer intenção de taxar adultos que moram com os pais (\"é falso. A Receita Federal negou em nota que pretenda taxar adultos que moram com os pais a partir\"). (Evidência 1)\n*   O UOL Comprova também afirma que não haverá cobrança de imposto de renda para adultos que moram com os pais sem pagar aluguel (\"Já no caso dos adultos que moram na casa dos pais sem pagar, não haverá a cobrança de imposto de renda\"). (Evidência 2)\n*   A Receita Federal publicou uma nota desmentindo a notícia, classificando-a como \"fake news\" e afirmando que \"Isso não existe, nem faz o menor sentido\". (Evidência 4)\n\nAs demais evidências (3, 5 e 6) não são relevantes para a verificação da afirmação, pois tratam de outros assuntos, como acusações contra ONGs e a USAID.\n\n⚠️ **DISCLAIMER IMPORTANTE** ⚠️\n\nEsta informação é baseada em dados públicos disponíveis e não substitui a consulta a fontes primárias ou especialistas. O objetivo é fornecer uma análise informativa com base nas fontes disponíveis.\n\n- Não oferecemos conselhos legais, médicos ou financeiros específicos\n- Recomendamos sempre consultar fontes oficiais e especialistas\n- As informações podem estar desatualizadas ou incompletas\n- Use esta ferramenta como ponto de partida para investigação adicional",
+    "reference": "FALSO: A Receita Federal negou oficialmente o boato, afirmando que a alegação 'não faz o menor sentido'. A legislação atual já prevê isenção para cessão gratuita de imóveis a parentes de primeiro grau (Estadão Verifica, 2025).",
+    "faithfulness": 0.29411764705882354,
+    "context_precision": 0.9166666666361111,
+    "context_recall": 0.5,
+    "answer_correctness": 0.5062841217742571,
+    "answer_relevancy": NaN
+  },
+  {
+    "user_input": "O novo sistema de recolhimento automático de impostos da Receita Federal irá criar uma taxa extra para transações via Pix?",
+    "retrieved_contexts": [
+      "A Receita Federal explica que a nova medida não implica cobrança de imposto sobre o Pix e não cria nenhuma taxa adicional. Trata-se apenas de",
+      "Uma delas é a de que a USAID teria financiado a campanha do presidente Luiz Inácio Lula da Silva contra o ex-presidente Jair Bolsonaro (PL). O",
+      "O PIX não será taxado. As transferências via PIX não são monitoradas diariamente. O esclarecimento foi feito nesta semana pela Receita Federal,",
+      "O Estadão Verifica investigou e concluiu que: é falso. A Receita Federal negou em nota que pretenda taxar adultos que moram com os pais a partir",
+      "Diferentemente do que afirmam comentários na internet, a plataforma não cria tributações extras, taxas exclusivas para pagamentos no Pix ou"
+    ],
+    "response": "A afirmação de que o novo sistema de recolhimento automático de impostos da Receita Federal irá criar uma taxa extra para transações via Pix é **falsa**.\n\nAs evidências apontam consistentemente que não haverá novas taxas sobre o Pix.\n\n*   A Evidência 1 afirma: \"A Receita Federal explica que a nova medida não implica cobrança de imposto sobre o Pix e não cria nenhuma taxa adicional.\"\n*   A Evidência 3 reforça: \"O PIX não será taxado. As transferências via PIX não são monitoradas diariamente. O esclarecimento foi feito nesta semana pela Receita Federal.\"\n*   A Evidência 5 é ainda mais direta: \"Diferentemente do que afirmam comentários na internet, a plataforma não cria tributações extras, taxas exclusivas para pagamentos no Pix.\"\n\nAs demais evidências (2, 4 e 6) não são relevantes para a verificação da afirmação em questão.\n\n⚠️ **DISCLAIMER IMPORTANTE** ⚠️\n\nEsta informação é baseada em dados públicos disponíveis e não substitui a consulta a fontes primárias ou especialistas. O objetivo é fornecer uma análise informativa com base nas fontes disponíveis.\n\n- Não oferecemos conselhos legais, médicos ou financeiros específicos\n- Recomendamos sempre consultar fontes oficiais e especialistas\n- As informações podem estar desatualizadas ou incompletas\n- Use esta ferramenta como ponto de partida para investigação adicional",
+    "reference": "FALSO: A Receita Federal esclareceu que o novo sistema automatiza a cobrança de tributos já existentes sobre a venda de produtos e serviços por empresas, e não cria nenhuma taxa extra para o cidadão ou para o Pix (Estadão Verifica, 2025).",
+    "faithfulness": 0.5,
+    "context_precision": 0.8041666666465626,
+    "context_recall": 1.0,
+    "answer_correctness": 0.5440618464544644,
+    "answer_relevancy": NaN
+  },
+  {
+    "user_input": "O presidente Lula teve seu microfone cortado durante o discurso na Assembleia Geral da ONU em setembro de 2025?",
+    "retrieved_contexts": [
+      "Durante a Cúpula do Futuro, na Assembleia Geral da ONU em Nova York, o microfone do presidente Lula foi cortado por extrapolar o tempo de",
+      "Durante a Cúpula do Futuro, na Assembleia Geral da ONU em Nova York, o microfone do presidente Lula foi cortado por extrapolar o tempo de",
+      "Não é verdade que o áudio do microfone do presidente Lula (PT) foi cortado durante o discurso na Assembleia Geral da ONU (Organização das Nações",
+      "Uma delas é a de que a USAID teria financiado a campanha do presidente Luiz Inácio Lula da Silva contra o ex-presidente Jair Bolsonaro (PL). O",
+      "A Receita Federal explica que a nova medida não implica cobrança de imposto sobre o Pix e não cria nenhuma taxa adicional. Trata-se apenas de"
+    ],
+    "response": "Com base nas evidências fornecidas, a veracidade da afirmação \"O presidente Lula teve seu microfone cortado durante o discurso na Assembleia Geral da ONU em setembro de 2025?\" é complexa e requer análise cuidadosa.\n\n**Evidências que sugerem que o microfone foi cortado:**\n\n*   **Evidência 1:** \"Durante a Cúpula do Futuro, na Assembleia Geral da ONU em Nova York, o microfone do presidente Lula foi cortado por extrapolar o tempo de...\" (Relevância: 0.80)\n*   **Evidência 2:** \"Durante a Cúpula do Futuro, na Assembleia Geral da ONU em Nova York, o microfone do presidente Lula foi cortado por extrapolar o tempo de...\" (Relevância: 0.70)\n\nEssas duas evidências indicam que o microfone de Lula foi cortado durante um discurso na Assembleia Geral da ONU, especificamente durante a \"Cúpula do Futuro\", devido a uma extrapolação do tempo. No entanto, elas não especificam o ano de 2025.\n\n**Evidência que nega o corte do microfone:**\n\n*   **Evidência 3:** \"Não é verdade que o áudio do microfone do presidente Lula (PT) foi cortado durante o discurso na Assembleia Geral da ONU (Organização das Nações...\" (Relevância: 0.60)\n\nEssa evidência contradiz as duas anteriores, afirmando que o áudio do microfone de Lula não foi cortado durante um discurso na Assembleia Geral da ONU.\n\n**Evidências com baixa relevância:**\n\nAs evidências 4, 5 e 6 têm baixa relevância para a afirmação, pois tratam de temas como financiamento da USAID, monitoramento do Pix pela Receita Federal e acusações de Eduardo Bolsonaro sobre interferência em eleições.\n\n**Conclusão:**\n\nAs evidências apresentam informações conflitantes. As evidências 1 e 2 sugerem que o microfone de Lula foi cortado em um discurso na ONU, mas não confirmam que isso ocorreu em setembro de 2025. A evidência 3 nega que o microfone tenha sido cortado. Portanto, com base nas evidências fornecidas, não é possível confirmar ou negar definitivamente a afirmação de que o microfone de Lula foi cortado durante o discurso na Assembleia Geral da ONU em setembro de 2025. É necessário buscar fontes adicionais e mais específicas para verificar a veracidade da afirmação.\n\n⚠️ **DISCLAIMER IMPORTANTE** ⚠️\n\nEsta informação é baseada em dados públicos disponíveis e não substitui a consulta a fontes primárias ou especialistas. O objetivo é fornecer uma análise informativa com base nas fontes disponíveis.\n\n- Não oferecemos conselhos legais, médicos ou financeiros específicos\n- Recomendamos sempre consultar fontes oficiais e especialistas\n- As informações podem estar desatualizadas ou incompletas\n- Use esta ferramenta como ponto de partida para investigação adicional",
+    "reference": "FALSO: A fala do presidente na Assembleia Geral da ONU em 2025 ocorreu sem interrupções. Vídeos que circulam são de um evento diferente, em 2024, quando ele ultrapassou o tempo de fala (Aos Fatos, 2025).",
+    "faithfulness": 1.0,
+    "context_precision": 0.5833333333041666,
+    "context_recall": 0.0,
+    "answer_correctness": 0.5193092244510307,
+    "answer_relevancy": NaN
+  },
+  {
+    "user_input": "Os artistas Caetano Veloso, Chico Buarque, Gilberto Gil e Djavan foram beneficiados pela Lei da Anistia de 1979?",
+    "retrieved_contexts": [
+      "O ato contra a anistia é liderado por artistas como Caetano Veloso, Gilberto Gil e Chico Buarque todos eles salvos pela Lei da Anistia de 1979",
+      "9 likes, 4 comments - blogthalitamoema on September 21, 2025: \"Gilberto Gil, Caetano Veloso, Chico Buarque e Djavan — todos anistiados pela Lei da Anistia",
+      "A anistia de 1979 permitiu que eles e muitos outros artistas, intelectuais e ativistas políticos pudessem voltar ao Brasil e exercer sua",
+      "Uma delas é a de que a USAID teria financiado a campanha do presidente Luiz Inácio Lula da Silva contra o ex-presidente Jair Bolsonaro (PL). O",
+      "Com as alegações, Eduardo Bolsonaro recicla teorias de Donald Trump, que acusa a Usaid e outras agências americanas de pagar a imprensa"
+    ],
+    "response": "A afirmação de que \"Os artistas Caetano Veloso, Chico Buarque, Gilberto Gil e Djavan foram beneficiados pela Lei da Anistia de 1979\" parece ser verdadeira, com base nas evidências encontradas.\n\n*   **Evidência 1:** Afirma que Caetano Veloso, Gilberto Gil e Chico Buarque foram \"salvos pela Lei da Anistia de 1979\" (Fonte: Facebook).\n*   **Evidência 2:** Declara explicitamente que \"Gilberto Gil, Caetano Veloso, Chico Buarque e Djavan — todos anistiados pela Lei da Anistia\" (Fonte: Instagram).\n*   **Evidência 3:** Menciona que \"A anistia de 1979 permitiu que eles [Caetano Veloso, Gilberto Gil, Chico Buarque e Djavan] e muitos outros artistas, intelectuais e ativistas políticos pudessem voltar ao Brasil e exercer sua [arte]\" (Fonte: Poder360).\n\nAs evidências 4, 5 e 6 não são relevantes para a verificação desta afirmação.\n\n**Conclusão:**\n\nCom base nas evidências 1, 2 e 3, a afirmação de que Caetano Veloso, Chico Buarque, Gilberto Gil e Djavan foram beneficiados pela Lei da Anistia de 1979 é provavelmente verdadeira.\n\n⚠️ **DISCLAIMER IMPORTANTE** ⚠️\n\nEsta informação é baseada em dados públicos disponíveis e não substitui a consulta a fontes primárias ou especialistas. O objetivo é fornecer uma análise informativa com base nas fontes disponíveis.\n\n- Não oferecemos conselhos legais, médicos ou financeiros específicos\n- Recomendamos sempre consultar fontes oficiais e especialistas\n- As informações podem estar desatualizadas ou incompletas\n- Use esta ferramenta como ponto de partida para investigação adicional",
+    "reference": "FALSO: Os nomes dos artistas não constam na lista oficial de anistiados políticos. Além disso, Caetano, Chico e Gil retornaram do exílio no início da década de 1970, antes da promulgação da lei em 1979 (Estadão Verifica, 2025).",
+    "faithfulness": 0.4166666666666667,
+    "context_precision": 0.0,
+    "context_recall": 0.0,
+    "answer_correctness": 0.5210308267557321,
+    "answer_relevancy": NaN
+  },
+  {
+    "user_input": "Uma mensagem dos Correios sobre 'taxa de encomenda' pendente para liberação de um pacote é verdadeira?",
+    "retrieved_contexts": [
+      "É #FAKE mensagem de WhatsApp que se passa pelos Correios e cobra taxa para liberar encomenda; trata-se de golpe. Gustavo Mesquita19 de agosto",
+      "É #FAKE mensagem de WhatsApp que se passa pelos Correios e cobra taxa para liberar encomenda; trata-se de golpe. Ao Fato ou Fake, estatal diz",
+      "É #fake mensagem que se passa por Correios, Jadlog e Loggi e cobra taxa para liberar encomendas.",
+      "A Receita Federal explica que a nova medida não implica cobrança de imposto sobre o Pix e não cria nenhuma taxa adicional. Trata-se apenas de",
+      "O Estadão Verifica investigou e concluiu que: é falso. A Receita Federal negou em nota que pretenda taxar adultos que moram com os pais a partir"
+    ],
+    "response": "A afirmação \"Uma mensagem dos Correios sobre 'taxa de encomenda' pendente para liberação de um pacote é verdadeira?\" é **falsa**.\n\nAs evidências encontradas indicam que mensagens cobrando taxas para liberar encomendas em nome dos Correios são golpes.\n\n*   A Evidência 1 afirma: \"É #FAKE mensagem de WhatsApp que se passa pelos Correios e cobra taxa para liberar encomenda; trata-se de golpe.\"\n*   A Evidência 2 corrobora essa informação: \"É #FAKE mensagem de WhatsApp que se passa pelos Correios e cobra taxa para liberar encomenda; trata-se de golpe.\"\n*   A Evidência 3 expande a informação, indicando que o golpe também se utiliza de nomes como Jadlog e Loggi: \"É #fake mensagem que se passa por Correios, Jadlog e Loggi e cobra taxa para liberar encomendas.\"\n\n⚠️ **DISCLAIMER IMPORTANTE** ⚠️\n\nEsta informação é baseada em dados públicos disponíveis e não substitui a consulta a fontes primárias ou especialistas. O objetivo é fornecer uma análise informativa com base nas fontes disponíveis.\n\n- Não oferecemos conselhos legais, médicos ou financeiros específicos\n- Recomendamos sempre consultar fontes oficiais e especialistas\n- As informações podem estar desatualizadas ou incompletas\n- Use esta ferramenta como ponto de partida para investigação adicional",
+    "reference": "FALSO: Trata-se de um golpe. Os Correios e outras transportadoras afirmam que não enviam links por WhatsApp, SMS ou e-mail para cobrar taxas e liberar encomendas retidas (Fato ou Fake G1, 2025).",
+    "faithfulness": 0.45454545454545453,
+    "context_precision": 0.94999999997625,
+    "context_recall": 0.6666666666666666,
+    "answer_correctness": 0.766359383137658,
+    "answer_relevancy": NaN
+  },
+  {
+    "user_input": "O Brasil saiu oficialmente do Mapa da Fome da ONU em 2025?",
+    "retrieved_contexts": [
+      "O Brasil está oficialmente fora do Mapa da Fome da Organização das Nações Unidas para a Alimentação e a Agricultura (FAO). O relatório “O",
+      "✨O Brasil está oficialmente fora do Mapa da Fome da Organização das Nações Unidas para a Alimentação e a Agricultura (FAO/ONU)!",
+      "A ONU (Organização das Nações Unidas) para a Alimentação e a Agricultura anunciou, nesta segunda-feira (28), que o Brasil saiu oficialmente",
+      "Durante a Cúpula do Futuro, na Assembleia Geral da ONU em Nova York, o microfone do presidente Lula foi cortado por extrapolar o tempo de",
+      "Durante a Cúpula do Futuro, na Assembleia Geral da ONU em Nova York, o microfone do presidente Lula foi cortado por extrapolar o tempo de"
+    ],
+    "response": "A afirmação \"O Brasil saiu oficialmente do Mapa da Fome da ONU em 2025?\" é **falsa**.\n\nAs evidências indicam que o Brasil já havia saído do Mapa da Fome da FAO (Organização das Nações Unidas para a Alimentação e a Agricultura) em um período anterior a 2025.\n\n*   **Evidência 1:** \"O Brasil está oficialmente fora do Mapa da Fome da Organização das Nações Unidas para a Alimentação e a Agricultura (FAO).\"\n*   **Evidência 2:** \"✨O Brasil está oficialmente fora do Mapa da Fome da Organização das Nações Unidas para a Alimentação e a Agricultura (FAO/ONU)!\"\n*   **Evidência 3:** \"A ONU (Organização das Nações Unidas) para a Alimentação e a Agricultura anunciou, nesta segunda-feira (28), que o Brasil saiu oficialmente...\"\n\nAs demais evidências (4, 5 e 6) não são relevantes para verificar a afirmação sobre a saída do Brasil do Mapa da Fome.\n\n⚠️ **DISCLAIMER IMPORTANTE** ⚠️\n\nEsta informação é baseada em dados públicos disponíveis e não substitui a consulta a fontes primárias ou especialistas. O objetivo é fornecer uma análise informativa com base nas fontes disponíveis.\n\n- Não oferecemos conselhos legais, médicos ou financeiros específicos\n- Recomendamos sempre consultar fontes oficiais e especialistas\n- As informações podem estar desatualizadas ou incompletas\n- Use esta ferramenta como ponto de partida para investigação adicional",
+    "reference": "VERDADEIRO: A Organização das Nações Unidas para a Alimentação e a Agricultura (FAO) confirmou em julho de 2025 que o Brasil saiu do Mapa da Fome, por ter um percentual de pessoas em subalimentação abaixo do critério estabelecido (Estadão Verifica, 2025).",
+    "faithfulness": 0.23076923076923078,
+    "context_precision": 0.9999999999666667,
+    "context_recall": 0.0,
+    "answer_correctness": 0.45595433615586345,
+    "answer_relevancy": NaN
+  },
+  {
+    "user_input": "É verdade que o desmatamento na Amazônia foi reduzido pela metade nos últimos dois anos (2023-2025)?",
+    "retrieved_contexts": [
+      "# Desmatamento cai pela metade na Amazônia nos últimos 2 anos; degradação mais que dobrou no mesmo período Degradação florestal mais que dobrou na Amazônia de 2022 a 2024 Os números oficiais mostram que, na Amazônia, o desmatamento caiu pela metade de 2022 a 2024, mas a degradação ambiental na região mais que dobrou. Segundo o estudo feito em parceria com a USP, o **desmatamento na** Amazônia caiu pela metade em dois anos. Desmatamento cai pela metade na Amazônia nos últimos 2 anos — Foto: Repro...",
+      "Amazônia Legal perdeu 6.288 km² entre agosto de 2023 e julho de 2024, o menor resultado em 9 anos, de acordo com dados oficiais do PRODES-",
+      "O Brasil está oficialmente fora do Mapa da Fome da Organização das Nações Unidas para a Alimentação e a Agricultura (FAO). O relatório “O",
+      "A mentira tenta relacionar isso, de maneira confusa, com pagamentos de aluguel ou algo nesse sentido. Isso não existe, nem faz o menor sentido.",
+      "Foram registrados 80,95 km² de áreas desmatadas no mês em 2025, uma queda de 64,26% em relação ao mesmo período do ano passado, quando foram"
+    ],
+    "response": "A afirmação \"É verdade que o desmatamento na Amazônia foi reduzido pela metade nos últimos dois anos (2023-2025)?\" pode ser considerada **parcialmente verdadeira**, com ressalvas importantes.\n\n*   **Evidência de redução:** Uma das fontes (Evidência 1) afirma que \"os números oficiais mostram que, na Amazônia, o desmatamento caiu pela metade de 2022 a 2024\". Outra fonte (Evidência 5) indica que o desmatamento em fevereiro de 2025 teve uma queda de 64,26% em relação ao mesmo período do ano anterior. A Evidência 2 também aponta para uma redução, mencionando que a Amazônia Legal perdeu 6.288 km² entre agosto de 2023 e julho de 2024, o menor resultado em 9 anos.\n\n*   **Ressalvas:** A Evidência 1 também destaca que, embora o desmatamento tenha diminuído, a \"degradação ambiental na região mais que dobrou\" no mesmo período (2022 a 2024). Isso sugere que, embora a área desmatada possa ter diminuído, outras formas de dano ambiental podem ter aumentado.\n\nAs demais evidências (3, 4 e 6) não são diretamente relevantes para a questão do desmatamento na Amazônia.\n\n⚠️ **DISCLAIMER IMPORTANTE** ⚠️\n\nEsta informação é baseada em dados públicos disponíveis e não substitui a consulta a fontes primárias ou especialistas. O objetivo é fornecer uma análise informativa com base nas fontes disponíveis.\n\n- Não oferecemos conselhos legais, médicos ou financeiros específicos\n- Recomendamos sempre consultar fontes oficiais e especialistas\n- As informações podem estar desatualizadas ou incompletas\n- Use esta ferramenta como ponto de partida para investigação adicional",
+    "reference": "VERDADEIRO: Dados do INPE (Instituto Nacional de Pesquisas Espaciais) mostram que a área desmatada na Amazônia Legal em 2024 foi de 6,5 mil km², uma redução de aproximadamente 56% em comparação com os 11,5 mil km² de 2022 (Estadão Verifica, 2025).",
+    "faithfulness": 0.5625,
+    "context_precision": 0.8666666666377778,
+    "context_recall": 0.0,
+    "answer_correctness": 0.46593985720233977,
+    "answer_relevancy": NaN
+  },
+  {
+    "user_input": "O governo de São Paulo removeu a escolta policial do delegado Ruy Fontes após sua aposentadoria?",
+    "retrieved_contexts": [
+      "Uma delas é a de que a USAID teria financiado a campanha do presidente Luiz Inácio Lula da Silva contra o ex-presidente Jair Bolsonaro (PL). O",
+      "6 days ago—Não é verdade que ogovernodeSão Paulo, comandado por Tarcísio de Freitas (Republicanos-SP), retirou a segurança pessoal do ex-delegado-geral",
+      "A Receita Federal explica que a nova medida não implica cobrança de imposto sobre o Pix e não cria nenhuma taxa adicional. Trata-se apenas de",
+      "8 days ago—A Polícia Civil informou que delegados-gerais aposentados podem solicitarescolta apóso fim da carreira, mas afirmou que o ex-delegado-geral de",
+      "Com as alegações, Eduardo Bolsonaro recicla teorias de Donald Trump, que acusa a Usaid e outras agências americanas de pagar a imprensa"
+    ],
+    "response": "A afirmação \"O governo de São Paulo removeu a escolta policial do delegado Ruy Fontes após sua aposentadoria?\" pode ser considerada **falsa**, com base nas evidências encontradas.\n\n*   **Evidência 2:** A agência de checagem Aos Fatos publicou uma notícia afirmando: \"Não é verdade que o governo de São Paulo, comandado por Tarcísio de Freitas (Republicanos-SP), retirou a segurança pessoal do ex-delegado-geral\".\n\n*   **Evidência 6:** A Folha de S.Paulo informa que Ruy Fontes \"não recebia qualquer tipo de proteção oficial\" e que, segundo o governo Tarcísio de Freitas, \"ele não solicitou escolta\".\n\n*   **Evidência 4:** O G1 noticiou que \"delegados-gerais aposentados podem solicitar escolta após o fim da carreira, mas afirmou que o ex-delegado-geral de\".\n\nAs evidências indicam que Ruy Fontes não teve a escolta removida, pois aparentemente não a possuía após a aposentadoria, e que ele também não a solicitou.\n\n⚠️ **DISCLAIMER IMPORTANTE** ⚠️\n\nEsta informação é baseada em dados públicos disponíveis e não substitui a consulta a fontes primárias ou especialistas. O objetivo é fornecer uma análise informativa com base nas fontes disponíveis.\n\n- Não oferecemos conselhos legais, médicos ou financeiros específicos\n- Recomendamos sempre consultar fontes oficiais e especialistas\n- As informações podem estar desatualizadas ou incompletas\n- Use esta ferramenta como ponto de partida para investigação adicional",
+    "reference": "FALSO: A Secretaria de Segurança Pública de São Paulo informou que o delegado aposentado nunca teve escolta pessoal fornecida pelo Estado, portanto, ela não poderia ter sido retirada (Aos Fatos, 2025).",
+    "faithfulness": 0.125,
+    "context_precision": 0.49999999995,
+    "context_recall": 1.0,
+    "answer_correctness": 0.6198755188768942,
+    "answer_relevancy": 0.0
+  },
+  {
+    "user_input": "Um vídeo mostra uma cobra gigante mergulhando em um rio na floresta amazônica?",
+    "retrieved_contexts": [
+      "... Amazonas viraliza e encanta internautas Um vídeo que mostra uma suposta cobra gigantesca deslizando pelas águas do rio Amazonas viralizou",
+      "É #FAKE vídeo que mostra cobra gigante mergulhando em rio; cena foi criada com inteligência artificial. Detector de IA apontou 99% de",
+      "Video captured Giant Anaconda Slithering Through Stream in The Amazon ... camera flagra dóis duendes na floresta amazônica.#duendes #camera",
+      "# Desmatamento cai pela metade na Amazônia nos últimos 2 anos; degradação mais que dobrou no mesmo período Degradação florestal mais que dobrou na Amazônia de 2022 a 2024 Os números oficiais mostram que, na Amazônia, o desmatamento caiu pela metade de 2022 a 2024, mas a degradação ambiental na região mais que dobrou. Segundo o estudo feito em parceria com a USP, o **desmatamento na** Amazônia caiu pela metade em dois anos. Desmatamento cai pela metade na Amazônia nos últimos 2 anos — Foto: Repro...",
+      "É #fake mensagem que se passa por Correios, Jadlog e Loggi e cobra taxa para liberar encomendas."
+    ],
+    "response": "A afirmação \"Um vídeo mostra uma cobra gigante mergulhando em um rio na floresta amazônica?\" é falsa.\n\nA evidência 2, do G1, afirma categoricamente: \"É #FAKE vídeo que mostra cobra gigante mergulhando em rio; cena foi criada com inteligência artificial\" (Fonte: https://g1.globo.com/fato-ou-fake/noticia/2025/09/24/e-fake-video-que-mostra-cobra-gigante-mergulhando-em-rio-cena-foi-criada-com-inteligencia-artificial.ghtml).\n\nEmbora a evidência 1 mencione um vídeo viral de uma \"suposta cobra gigantesca deslizando pelas águas do rio Amazonas\" (Fonte: https://www.instagram.com/reel/DJathjAM3Jg/?hl=en), a evidência 2 contradiz essa informação, indicando que o vídeo é falso e criado com inteligência artificial.\n\nAs demais evidências (3, 4, 5 e 6) não fornecem informações diretas sobre a veracidade do vídeo em questão.\n\n⚠️ **DISCLAIMER IMPORTANTE** ⚠️\n\nEsta informação é baseada em dados públicos disponíveis e não substitui a consulta a fontes primárias ou especialistas. O objetivo é fornecer uma análise informativa com base nas fontes disponíveis.\n\n- Não oferecemos conselhos legais, médicos ou financeiros específicos\n- Recomendamos sempre consultar fontes oficiais e especialistas\n- As informações podem estar desatualizadas ou incompletas\n- Use esta ferramenta como ponto de partida para investigação adicional",
+    "reference": "FALSO: O vídeo é uma criação digital feita com Inteligência Artificial. Ferramentas de detecção apontaram 99% de probabilidade de o conteúdo ser gerado artificialmente, além de apresentar diversas incoerências visuais (Fato ou Fake G1, 2025).",
+    "faithfulness": 0.2857142857142857,
+    "context_precision": 0.99999999995,
+    "context_recall": 0.6666666666666666,
+    "answer_correctness": 0.3985704118621475,
+    "answer_relevancy": 0.0
+  }
+]

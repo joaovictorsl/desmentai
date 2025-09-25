@@ -1,0 +1,53 @@
+[
+  {
+    "user_input": "O Brasil é o maior produtor de café do mundo?",
+    "retrieved_contexts": [
+      "O Brasil é o maior produtor e exportador de café do mundo, sendo responsável por cerca de 38% da produção global. Depois do Brasil, o segundo maior produtor do mundo é o Vietnã, que deverá colher uma safra de 30,1 milhões de sacas, seguido pela Colômbia, cuja produção está estimada em 12,9 milhões de sacas. Este aumento se deve especialmente ao bom desenvolvimento das safras do Brasil e da Colômbia, importantes produtores mundiais e da retomada da produção vietnamita, que registrou safras menore...",
+      "O Brasil lidera o ranking de maior produtor de café do mundo: 36,8% do café mundial é produzido aqui no nosso país. Com uma longa tradição e uma",
+      "O Brasil mantém sua posição como o maior produtor de café do mundo, com uma produção estimada em 69,9 milhões de sacas para a safra 2024/25.",
+      "Verificação: Mudanças Climáticas\n\n\nVERIFICAÇÃO: Mudanças climáticas são causadas pelo homem\nVERDADEIRO. O consenso científico é claro: as mudanças climáticas são causadas principalmente pela atividade humana.\nDados da NASA mostram que a temperatura média global aumentou 1,1°C desde 1880.\nFonte: NASA e IPCC\nData: 2024",
+      "Verificação: Vacinas COVID-19\n\n\nVERIFICAÇÃO: Vacinas contra COVID-19 são seguras\nVERDADEIRO. As vacinas contra COVID-19 são seguras e eficazes, conforme comprovado por estudos científicos rigorosos.\nDados da OMS mostram que mais de 13 bilhões de doses foram administradas globalmente com segurança.\nFonte: Organização Mundial da Saúde (OMS)\nData: 2024"
+    ],
+    "response": "Com base nas evidências apresentadas, a afirmação \"O Brasil é o maior produtor de café do mundo?\" é **VERDADEIRA**.\n\n*   **Evidência 1:** A fonte afirma que \"O Brasil é o maior produtor e exportador de café do mundo, sendo responsável por cerca de 38% da produção global\" (Globo Rural).\n*   **Evidência 2:** A fonte confirma que \"O Brasil lidera o ranking de maior produtor de café do mundo: 36,8% do café mundial é produzido aqui no nosso país\" (Agroadvance).\n*   **Evidência 3:** A fonte corrobora que \"O Brasil mantém sua posição como o maior produtor de café do mundo, com uma produção estimada em 69,9 milhões de sacas para a safra 2024/25\" (G1).\n\nAs evidências 4 e 5 não são relevantes para a verificação desta afirmação.\n\n⚠️ **DISCLAIMER IMPORTANTE** ⚠️\n\nEsta informação é baseada em dados públicos disponíveis e não substitui a consulta a fontes primárias ou especialistas. O objetivo é fornecer uma análise informativa com base nas fontes disponíveis.\n\n- Não oferecemos conselhos legais, médicos ou financeiros específicos\n- Recomendamos sempre consultar fontes oficiais e especialistas\n- As informações podem estar desatualizadas ou incompletas\n- Use esta ferramenta como ponto de partida para investigação adicional",
+    "reference": "VERDADEIRO: O Brasil é o maior produtor de café do mundo, responsável por cerca de 1/3 da produção global (FAO, 2023).",
+    "faithfulness": 0.36363636363636365,
+    "context_precision": 0.9999999999666667,
+    "context_recall": 1.0,
+    "answer_correctness": 0.5114438765062643,
+    "answer_relevancy": 0.9999999999999996
+  },
+  {
+    "user_input": "As vacinas contra COVID-19 causam autismo?",
+    "retrieved_contexts": [
+      "Verificação: Vacinas COVID-19\n\n\nVERIFICAÇÃO: Vacinas contra COVID-19 são seguras\nVERDADEIRO. As vacinas contra COVID-19 são seguras e eficazes, conforme comprovado por estudos científicos rigorosos.\nDados da OMS mostram que mais de 13 bilhões de doses foram administradas globalmente com segurança.\nFonte: Organização Mundial da Saúde (OMS)\nData: 2024",
+      "Un criticado estudio en el que se administraron vacunas contra el COVID-19 a ratas embarazadas, no demuestra que las vacunas causen autismo ni",
+      "O Brasil é o maior produtor e exportador de café do mundo, sendo responsável por cerca de 38% da produção global. Depois do Brasil, o segundo maior produtor do mundo é o Vietnã, que deverá colher uma safra de 30,1 milhões de sacas, seguido pela Colômbia, cuja produção está estimada em 12,9 milhões de sacas. Este aumento se deve especialmente ao bom desenvolvimento das safras do Brasil e da Colômbia, importantes produtores mundiais e da retomada da produção vietnamita, que registrou safras menore...",
+      "Las vacunas no causan autismo. Es posible que el momento en que se diagnostica el autismo o la aparición de sus síntomas coincida con el calendario de",
+      "Las vacunas, incluida la vacuna MMR (triple vírica), no causan autismo. Esto ha sido estudiado minuciosamente: más de 25 estudios epidemioló"
+    ],
+    "response": "A afirmação \"As vacinas contra COVID-19 causam autismo?\" é **falsa**.\n\nAs evidências encontradas refutam essa alegação:\n\n*   **Segurança das vacinas COVID-19:** Estudos científicos rigorosos comprovam que as vacinas contra COVID-19 são seguras e eficazes. A Organização Mundial da Saúde (OMS) informa que mais de 13 bilhões de doses foram administradas globalmente com segurança (Evidência 1).\n*   **Estudos sobre vacinas e autismo:** A Autism Speaks afirma que as vacinas não causam autismo (Evidência 4).\n*   **Refutação de ligação causal:** Mais de 25 estudos epidemiológicos minuciosos demonstram que as vacinas, incluindo a vacina MMR (sarampo, caxumba e rubéola), não causam autismo (Evidência 5).\n*   **Estudo em ratos:** Um estudo criticado que administrou vacinas contra COVID-19 a ratas grávidas não demonstra que as vacinas causem autismo (Evidência 2).\n\nAs evidências 3 e 6, que tratam da produção de café no Brasil, não são relevantes para a verificação da afirmação sobre vacinas e autismo.\n\n⚠️ **DISCLAIMER IMPORTANTE** ⚠️\n\nEsta informação é baseada em dados públicos disponíveis e não substitui a consulta a fontes primárias ou especialistas. O objetivo é fornecer uma análise informativa com base nas fontes disponíveis.\n\n- Não oferecemos conselhos legais, médicos ou financeiros específicos\n- Recomendamos sempre consultar fontes oficiais e especialistas\n- As informações podem estar desatualizadas ou incompletas\n- Use esta ferramenta como ponto de partida para investigação adicional",
+    "reference": "FALSO: Não há evidências científicas que comprovem que vacinas contra COVID-19 causam autismo (CDC, OMS, 2023).",
+    "faithfulness": 0.4666666666666667,
+    "context_precision": 0.8874999999778125,
+    "context_recall": 1.0,
+    "answer_correctness": 0.6460953051738914,
+    "answer_relevancy": 0.0
+  },
+  {
+    "user_input": "A Terra é plana?",
+    "retrieved_contexts": [
+      "Terra plana é uma concepção arcaica do formato da Terra como um plano ou disco. Muitas culturas antigas concordavam sobre a cosmografia plana da Terra,",
+      "A Terra plana é uma pseudociência que acredita que a Terra tem um formato plano. Ela é baseada em ideias equivocadas e no negacionismo científico. Essa visão",
+      "Aqueles que estão convencidos de que a Terra é plana tendem a viver nas sombras, um tanto perseguidos, quase paranoicos. Eles se comunicam em",
+      "Verificação: Mudanças Climáticas\n\n\nVERIFICAÇÃO: Mudanças climáticas são causadas pelo homem\nVERDADEIRO. O consenso científico é claro: as mudanças climáticas são causadas principalmente pela atividade humana.\nDados da NASA mostram que a temperatura média global aumentou 1,1°C desde 1880.\nFonte: NASA e IPCC\nData: 2024",
+      "O Brasil é o maior produtor e exportador de café do mundo, sendo responsável por cerca de 38% da produção global. Depois do Brasil, o segundo maior produtor do mundo é o Vietnã, que deverá colher uma safra de 30,1 milhões de sacas, seguido pela Colômbia, cuja produção está estimada em 12,9 milhões de sacas. Este aumento se deve especialmente ao bom desenvolvimento das safras do Brasil e da Colômbia, importantes produtores mundiais e da retomada da produção vietnamita, que registrou safras menore..."
+    ],
+    "response": "A afirmação \"A Terra é plana?\" é falsa.\n\nAs evidências encontradas indicam que a ideia de uma Terra plana é uma concepção arcaica e uma pseudociência.\n\n*   **Evidência 1:** A Wikipédia define \"Terra plana\" como uma concepção antiga do formato da Terra como um plano ou disco, presente em muitas culturas antigas (\"Terra plana é uma concepção arcaica do formato da Terra como um plano ou disco\").\n*   **Evidência 2:** O Mundo Educação classifica a crença na Terra plana como uma pseudociência baseada em ideias equivocadas e negacionismo científico (\"A Terra plana é uma pseudociência que acredita que a Terra tem um formato plano. Ela é baseada em ideias equivocadas e no negacionismo científico\").\n*   **Evidência 3:** A Carta Capital descreve os defensores da Terra plana como pessoas que vivem \"nas sombras\", sugerindo que essa crença não é amplamente aceita ou apoiada pela sociedade (\"Aqueles que estão convencidos de que a Terra é plana tendem a viver nas sombras, um tanto perseguidos, quase paranoicos\").\n\nAs evidências 4, 5 e 6 não são relevantes para a verificação da afirmação.\n\n⚠️ **DISCLAIMER IMPORTANTE** ⚠️\n\nEsta informação é baseada em dados públicos disponíveis e não substitui a consulta a fontes primárias ou especialistas. O objetivo é fornecer uma análise informativa com base nas fontes disponíveis.\n\n- Não oferecemos conselhos legais, médicos ou financeiros específicos\n- Recomendamos sempre consultar fontes oficiais e especialistas\n- As informações podem estar desatualizadas ou incompletas\n- Use esta ferramenta como ponto de partida para investigação adicional",
+    "reference": "FALSO: A Terra é esférica, não plana. Evidências científicas incontestáveis comprovam isso (NASA, 2023).",
+    "faithfulness": 0.35294117647058826,
+    "context_precision": 0.0,
+    "context_recall": 0.0,
+    "answer_correctness": 0.4740781728773468,
+    "answer_relevancy": 0.0
+  }
+]

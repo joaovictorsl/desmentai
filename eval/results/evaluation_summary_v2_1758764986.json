@@ -1,0 +1,40 @@
+{
+  "total_questions": 3,
+  "average_scores": {
+    "faithfulness": 0.3944147355912062,
+    "answer_relevancy": 0.3333333333333332,
+    "context_precision": 0.6291666666481598,
+    "context_recall": 0.6666666666666666,
+    "answer_correctness": 0.5438724515191675
+  },
+  "best_performing_metric": "context_recall",
+  "worst_performing_metric": "answer_relevancy",
+  "overall_score": 0.5134907707517067,
+  "problematic_questions": 3,
+  "performance_by_question": [
+    {
+      "question": "...",
+      "faithfulness": 0.36363636363636365,
+      "answer_relevancy": 0.9999999999999996,
+      "context_precision": 0.9999999999666667,
+      "context_recall": 1.0,
+      "answer_correctness": 0.5114438765062643
+    },
+    {
+      "question": "...",
+      "faithfulness": 0.4666666666666667,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.8874999999778125,
+      "context_recall": 1.0,
+      "answer_correctness": 0.6460953051738914
+    },
+    {
+      "question": "...",
+      "faithfulness": 0.35294117647058826,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "context_recall": 0.0,
+      "answer_correctness": 0.4740781728773468
+    }
+  ]
+}
